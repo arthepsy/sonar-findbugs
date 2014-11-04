@@ -28,3 +28,7 @@ Thumbs.db
 Desktop.ini
 #jenv
 .java-version
+
+# --- vim
+*~
+
