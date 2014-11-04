@@ -74,6 +74,9 @@ public class FindbugsProfileImporter extends ProfileImporter {
       if (rule == null) {
         rule = ruleFinder.findByKey(FbContribRuleRepository.REPOSITORY_KEY, patternLevel.getKey());
       }
+      if (rule == null) {
+        rule = ruleFinder.findByKey(FindSecBugsRuleRepository.REPOSITORY_KEY, patternLevel.getKey());
+      }
       if (rule != null) {
         profile.activateRule(rule, patternLevel.getValue());
       } else {
@@ -116,7 +119,8 @@ public class FindbugsProfileImporter extends ProfileImporter {
   private Iterable<Rule> rules() {
     return Iterables.concat(
       ruleFinder.findAll(RuleQuery.create().withRepositoryKey(FindbugsRuleRepository.REPOSITORY_KEY)),
-      ruleFinder.findAll(RuleQuery.create().withRepositoryKey(FbContribRuleRepository.REPOSITORY_KEY))
+      ruleFinder.findAll(RuleQuery.create().withRepositoryKey(FbContribRuleRepository.REPOSITORY_KEY)),
+      ruleFinder.findAll(RuleQuery.create().withRepositoryKey(FindSecBugsRuleRepository.REPOSITORY_KEY))
     );
   }
 

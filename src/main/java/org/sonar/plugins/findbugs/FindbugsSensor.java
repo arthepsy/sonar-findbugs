@@ -56,7 +56,7 @@ public class FindbugsSensor implements Sensor {
   @Override
   public boolean shouldExecuteOnProject(Project project) {
     return fs.hasFiles(fs.predicates().hasLanguage(Java.KEY))
-        && (hasActiveFindbugsbRules() || hasActiveFbContribRules());
+        && (hasActiveFindbugsbRules() || hasActiveFbContribRules() || hasActiveFindSecBugsRules());
   }
 
   private boolean hasActiveFindbugsbRules() {
@@ -67,6 +67,10 @@ public class FindbugsSensor implements Sensor {
     return !profile.getActiveRulesByRepository(FbContribRuleRepository.REPOSITORY_KEY).isEmpty();
   }
 
+  private boolean hasActiveFindSecBugsRules() {
+    return !profile.getActiveRulesByRepository(FindSecBugsRuleRepository.REPOSITORY_KEY).isEmpty();
+  }
+
   @Override
   public void analyse(Project project, SensorContext context) {
     if (javaResourceLocator.classFilesToAnalyze().isEmpty()) {
@@ -75,16 +79,19 @@ public class FindbugsSensor implements Sensor {
           + " make it possible for Findbugs to analyse your project.");
       return;
     }
-    Collection<ReportedBug> collection = executor.execute(hasActiveFbContribRules());
+    Collection<ReportedBug> collection = executor.execute(hasActiveFbContribRules(), hasActiveFindSecBugsRules());
 
     for (ReportedBug bugInstance : collection) {
       Rule rule = ruleFinder.findByKey(FindbugsRuleRepository.REPOSITORY_KEY, bugInstance.getType());
       if (rule == null) {
         rule = ruleFinder.findByKey(FbContribRuleRepository.REPOSITORY_KEY, bugInstance.getType());
         if (rule == null) {
-          // ignore violations from report, if rule not activated in Sonar
-          LOG.warn("Findbugs rule '{}' not active in Sonar.", bugInstance.getType());
-          continue;
+          rule = ruleFinder.findByKey(FindSecBugsRuleRepository.REPOSITORY_KEY, bugInstance.getType());
+          if (rule == null) {
+            // ignore violations from report, if rule not activated in Sonar
+            LOG.warn("Findbugs rule '{}' not active in Sonar.", bugInstance.getType());
+            continue;
+          }
         }
       }
 
