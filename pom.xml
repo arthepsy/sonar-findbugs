@@ -10,12 +10,12 @@
 
   <groupId>org.codehaus.sonar-plugins.java</groupId>
   <artifactId>sonar-findbugs-plugin</artifactId>
-  <version>3.1-SNAPSHOT</version>
+  <version>3.2-SNAPSHOT</version>
   <packaging>sonar-plugin</packaging>
 
   <name>SonarQube Findbugs Plugin</name>
   <description>FindBugs is a program that uses static analysis to look for bugs in Java code. It can detect a variety of common coding mistakes, including thread synchronization problems, misuse of API methods.</description>
-  <url>http://docs.codehaus.org/x/4ZS7DQ</url>
+  <url>http://redirect.sonarsource.com/plugins/findbugs.html</url>
   <issueManagement>
     <system>JIRA</system>
     <url>http://jira.codehaus.org/browse/SONARFBUGS</url>
@@ -57,7 +57,7 @@
     <jdk.min.version>1.7</jdk.min.version>
 
     <sonar.version>4.2</sonar.version>
-    <sonar-java.version>2.5</sonar-java.version>
+    <sonar-java.version>2.7</sonar-java.version>
     <fbcontrib.version>6.0.0</fbcontrib.version>
     <findsecbugs.version>1.2.1</findsecbugs.version>
   </properties>
