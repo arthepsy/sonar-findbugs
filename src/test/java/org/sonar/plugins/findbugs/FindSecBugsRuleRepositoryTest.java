@@ -32,7 +32,7 @@ public class FindSecBugsRuleRepositoryTest {
   public void testLoadRepositoryFromXml() {
     FindSecBugsRuleRepository repository = new FindSecBugsRuleRepository(new XMLRuleParser());
     List<Rule> rules = repository.createRules();
-    assertThat(rules.size()).isEqualTo(52);
+    assertThat(rules.size()).isEqualTo(56);
     for (Rule rule : rules) {
       assertThat(rule.getKey()).isNotNull();
       assertThat(rule.getConfigKey()).isEqualTo(rule.getKey());
