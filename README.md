@@ -3,6 +3,9 @@
 
 ## ChangeLog
 
+### 2015-01-08  
+- Rename bug category "Style" to "Dodgy code".  
+
 ### 2015-01-07  
 - Update to fb-contrib-6.1.0-SNAPSHOT-20150107 (-1,+8 rules).  
 

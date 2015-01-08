@@ -103,7 +103,7 @@
   </rule>
 
   <rule key="CC_CYCLOMATIC_COMPLEXITY" priority="INFO">
-    <name><![CDATA[Style - Method is excessively complex]]></name>
+    <name><![CDATA[Dodgy code - Method is excessively complex]]></name>
     <configKey><![CDATA[CC_CYCLOMATIC_COMPLEXITY]]></configKey>
     <description><![CDATA[
 
@@ -115,7 +115,7 @@
   </rule>
 
   <rule key="OCP_OVERLY_CONCRETE_PARAMETER" priority="INFO">
-    <name><![CDATA[Style - Method needlessly defines parameter with concrete classes]]></name>
+    <name><![CDATA[Dodgy code - Method needlessly defines parameter with concrete classes]]></name>
     <configKey><![CDATA[OCP_OVERLY_CONCRETE_PARAMETER]]></configKey>
     <description><![CDATA[
 
@@ -149,7 +149,7 @@
   </rule>
 
   <rule key="LII_LIST_INDEXED_ITERATING" priority="INFO">
-    <name><![CDATA[Style - Method uses integer based for loops to iterate over a List]]></name>
+    <name><![CDATA[Dodgy code - Method uses integer based for loops to iterate over a List]]></name>
     <configKey><![CDATA[LII_LIST_INDEXED_ITERATING]]></configKey>
     <description><![CDATA[
 
@@ -162,7 +162,7 @@
   </rule>
 
   <rule key="UCC_UNRELATED_COLLECTION_CONTENTS" priority="INFO">
-    <name><![CDATA[Style - Method adds unrelated types to collection or array]]></name>
+    <name><![CDATA[Dodgy code - Method adds unrelated types to collection or array]]></name>
     <configKey><![CDATA[UCC_UNRELATED_COLLECTION_CONTENTS]]></configKey>
     <description><![CDATA[
 
@@ -174,7 +174,7 @@
   </rule>
 
   <rule key="DRE_DECLARED_RUNTIME_EXCEPTION" priority="INFO">
-    <name><![CDATA[Style - Method declares RuntimeException in throws clause]]></name>
+    <name><![CDATA[Dodgy code - Method declares RuntimeException in throws clause]]></name>
     <configKey><![CDATA[DRE_DECLARED_RUNTIME_EXCEPTION]]></configKey>
     <description><![CDATA[
 
@@ -187,7 +187,7 @@
   </rule>
 
   <rule key="CE_CLASS_ENVY" priority="INFO">
-    <name><![CDATA[Style - Method excessively uses methods of another class]]></name>
+    <name><![CDATA[Dodgy code - Method excessively uses methods of another class]]></name>
     <configKey><![CDATA[CE_CLASS_ENVY]]></configKey>
     <description><![CDATA[
 
@@ -201,7 +201,7 @@
   </rule>
 
   <rule key="LSC_LITERAL_STRING_COMPARISON" priority="INFO">
-    <name><![CDATA[Style - Method makes literal string comparisons passing the literal as an argument]]></name>
+    <name><![CDATA[Dodgy code - Method makes literal string comparisons passing the literal as an argument]]></name>
     <configKey><![CDATA[LSC_LITERAL_STRING_COMPARISON]]></configKey>
     <description><![CDATA[
 
@@ -248,7 +248,7 @@
   </rule>
 
   <rule key="PL_PARALLEL_LISTS" priority="INFO">
-    <name><![CDATA[Style - Class defines two or more one for one associated lists or arrays]]></name>
+    <name><![CDATA[Dodgy code - Class defines two or more one for one associated lists or arrays]]></name>
     <configKey><![CDATA[PL_PARALLEL_LISTS]]></configKey>
     <description><![CDATA[
 
@@ -277,7 +277,7 @@
   </rule>
 
   <rule key="FP_FINAL_PARAMETERS" priority="INFO">
-    <name><![CDATA[Style - Method does not define a parameter as final, but could]]></name>
+    <name><![CDATA[Dodgy code - Method does not define a parameter as final, but could]]></name>
     <configKey><![CDATA[FP_FINAL_PARAMETERS]]></configKey>
     <description><![CDATA[
 
@@ -294,7 +294,7 @@
   </rule>
 
   <rule key="ACEM_ABSTRACT_CLASS_EMPTY_METHODS" priority="INFO">
-    <name><![CDATA[Style - Empty method could be declared abstract]]></name>
+    <name><![CDATA[Dodgy code - Empty method could be declared abstract]]></name>
     <configKey><![CDATA[ACEM_ABSTRACT_CLASS_EMPTY_METHODS]]></configKey>
     <description><![CDATA[
 
@@ -330,7 +330,7 @@
   </rule>
 
   <rule key="NCMU_NON_COLLECTION_METHOD_USE" priority="INFO">
-    <name><![CDATA[Style - Method uses old non collections interface methods]]></name>
+    <name><![CDATA[Dodgy code - Method uses old non collections interface methods]]></name>
     <configKey><![CDATA[NCMU_NON_COLLECTION_METHOD_USE]]></configKey>
     <description><![CDATA[
 
@@ -365,7 +365,7 @@
   </rule>
 
   <rule key="SMII_STATIC_METHOD_INSTANCE_INVOCATION" priority="INFO">
-    <name><![CDATA[Style - Method calls static method on instance reference]]></name>
+    <name><![CDATA[Dodgy code - Method calls static method on instance reference]]></name>
     <configKey><![CDATA[SMII_STATIC_METHOD_INSTANCE_INVOCATION]]></configKey>
     <description><![CDATA[
 
@@ -590,7 +590,7 @@
   </rule>
 
   <rule key="USBR_UNNECESSARY_STORE_BEFORE_RETURN" priority="INFO">
-    <name><![CDATA[Style - Method stores return result in local before immediately returning it]]></name>
+    <name><![CDATA[Dodgy code - Method stores return result in local before immediately returning it]]></name>
     <configKey><![CDATA[USBR_UNNECESSARY_STORE_BEFORE_RETURN]]></configKey>
     <description><![CDATA[
 
@@ -625,7 +625,7 @@
   </rule>
 
   <rule key="COM_COPIED_OVERRIDDEN_METHOD" priority="INFO">
-    <name><![CDATA[Style - Method is implemented with an exact copy of its superclass's method]]></name>
+    <name><![CDATA[Dodgy code - Method is implemented with an exact copy of its superclass's method]]></name>
     <configKey><![CDATA[COM_COPIED_OVERRIDDEN_METHOD]]></configKey>
     <description><![CDATA[
 
@@ -671,7 +671,7 @@
   </rule>
 
   <rule key="CBX_CUSTOM_BUILT_XML" priority="INFO">
-    <name><![CDATA[Style - Method builds XML strings through ad hoc concatenation]]></name>
+    <name><![CDATA[Dodgy code - Method builds XML strings through ad hoc concatenation]]></name>
     <configKey><![CDATA[CBX_CUSTOM_BUILT_XML]]></configKey>
     <description><![CDATA[
 
@@ -711,7 +711,7 @@
   </rule>
 
   <rule key="SCR_SLOPPY_CLASS_REFLECTION" priority="INFO">
-    <name><![CDATA[Style - Method accesses statically bound class with Class.forName]]></name>
+    <name><![CDATA[Dodgy code - Method accesses statically bound class with Class.forName]]></name>
     <configKey><![CDATA[SCR_SLOPPY_CLASS_REFLECTION]]></configKey>
     <description><![CDATA[
 
@@ -724,7 +724,7 @@
   </rule>
 
   <rule key="AWCBR_ARRAY_WRAPPED_CALL_BY_REFERENCE" priority="INFO">
-    <name><![CDATA[Style - Method uses 1 element array to simulate call by reference]]></name>
+    <name><![CDATA[Dodgy code - Method uses 1 element array to simulate call by reference]]></name>
     <configKey><![CDATA[AWCBR_ARRAY_WRAPPED_CALL_BY_REFERENCE]]></configKey>
     <description><![CDATA[
 
@@ -900,7 +900,7 @@
   </rule>
 
   <rule key="NOS_NON_OWNED_SYNCHRONIZATION" priority="INFO">
-    <name><![CDATA[Style - Class uses non owned variables to synchronize on]]></name>
+    <name><![CDATA[Dodgy code - Class uses non owned variables to synchronize on]]></name>
     <configKey><![CDATA[NOS_NON_OWNED_SYNCHRONIZATION]]></configKey>
     <description><![CDATA[
 
@@ -1050,7 +1050,7 @@
   </rule>
 
   <rule key="ITC_INHERITANCE_TYPE_CHECKING" priority="INFO">
-    <name><![CDATA[Style - Method uses instanceof on multiple types to arbitrate logic]]></name>
+    <name><![CDATA[Dodgy code - Method uses instanceof on multiple types to arbitrate logic]]></name>
     <configKey><![CDATA[ITC_INHERITANCE_TYPE_CHECKING]]></configKey>
     <description><![CDATA[
 
@@ -1089,7 +1089,7 @@
   </rule>
 
   <rule key="UTA_USE_TO_ARRAY" priority="INFO">
-    <name><![CDATA[Style - Method manually creates array from collection]]></name>
+    <name><![CDATA[Dodgy code - Method manually creates array from collection]]></name>
     <configKey><![CDATA[UTA_USE_TO_ARRAY]]></configKey>
     <description><![CDATA[
 
@@ -1163,7 +1163,7 @@
   </rule>
 
   <rule key="URV_UNRELATED_RETURN_VALUES" priority="INFO">
-    <name><![CDATA[Style - Method returns different types of unrelated Objects]]></name>
+    <name><![CDATA[Dodgy code - Method returns different types of unrelated Objects]]></name>
     <configKey><![CDATA[URV_UNRELATED_RETURN_VALUES]]></configKey>
     <description><![CDATA[
 
@@ -1174,7 +1174,7 @@
   </rule>
 
   <rule key="URV_CHANGE_RETURN_TYPE" priority="INFO">
-    <name><![CDATA[Style - Method returns more specific type of object than declared]]></name>
+    <name><![CDATA[Dodgy code - Method returns more specific type of object than declared]]></name>
     <configKey><![CDATA[URV_CHANGE_RETURN_TYPE]]></configKey>
     <description><![CDATA[
 
@@ -1187,7 +1187,7 @@
   </rule>
 
   <rule key="URV_INHERITED_METHOD_WITH_RELATED_TYPES" priority="INFO">
-    <name><![CDATA[Style - Inherited method returns more specific type of object than declared]]></name>
+    <name><![CDATA[Dodgy code - Inherited method returns more specific type of object than declared]]></name>
     <configKey><![CDATA[URV_INHERITED_METHOD_WITH_RELATED_TYPES]]></configKey>
     <description><![CDATA[
 
@@ -1436,7 +1436,7 @@
   </rule>
 
   <rule key="SPP_USE_CONTAINSKEY" priority="INFO">
-    <name><![CDATA[Style - Method calls keySet() just to call contains, use containsKey instead]]></name>
+    <name><![CDATA[Dodgy code - Method calls keySet() just to call contains, use containsKey instead]]></name>
     <configKey><![CDATA[SPP_USE_CONTAINSKEY]]></configKey>
     <description><![CDATA[
 
@@ -1446,7 +1446,7 @@
   </rule>
 
   <rule key="SPP_USE_ISEMPTY" priority="INFO">
-    <name><![CDATA[Style - Method checks the size of a collection against zero rather than using isEmpty()]]></name>
+    <name><![CDATA[Dodgy code - Method checks the size of a collection against zero rather than using isEmpty()]]></name>
     <configKey><![CDATA[SPP_USE_ISEMPTY]]></configKey>
     <description><![CDATA[
 
@@ -1457,7 +1457,7 @@
   </rule>
 
   <rule key="SPP_USE_GETPROPERTY" priority="INFO">
-    <name><![CDATA[Style - Method calls getProperties just to get one property, use getProperty instead]]></name>
+    <name><![CDATA[Dodgy code - Method calls getProperties just to get one property, use getProperty instead]]></name>
     <configKey><![CDATA[SPP_USE_GETPROPERTY]]></configKey>
     <description><![CDATA[
 
@@ -1472,7 +1472,7 @@
   </rule>
 
   <rule key="SPP_SERIALVER_SHOULD_BE_PRIVATE" priority="INFO">
-    <name><![CDATA[Style - Class defines a serialVersionUID as non private]]></name>
+    <name><![CDATA[Dodgy code - Class defines a serialVersionUID as non private]]></name>
     <configKey><![CDATA[SPP_SERIALVER_SHOULD_BE_PRIVATE]]></configKey>
     <description><![CDATA[
 
@@ -1509,7 +1509,7 @@
   </rule>
 
   <rule key="SPP_EMPTY_CASING" priority="INFO">
-    <name><![CDATA[Style - Method passes an empty string to equalsIgnoreCase or compareToIgnoreCase]]></name>
+    <name><![CDATA[Dodgy code - Method passes an empty string to equalsIgnoreCase or compareToIgnoreCase]]></name>
     <configKey><![CDATA[SPP_EMPTY_CASING]]></configKey>
     <description><![CDATA[
 
@@ -1520,7 +1520,7 @@
   </rule>
 
   <rule key="SPP_TEMPORARY_TRIM" priority="INFO">
-    <name><![CDATA[Style - Method trims a String temporarily]]></name>
+    <name><![CDATA[Dodgy code - Method trims a String temporarily]]></name>
     <configKey><![CDATA[SPP_TEMPORARY_TRIM]]></configKey>
     <description><![CDATA[
 
@@ -1604,7 +1604,7 @@
   </rule>
 
   <rule key="SPP_NON_USEFUL_TOSTRING" priority="INFO">
-    <name><![CDATA[Style - Method calls toString() on an instance of a class that hasn't overridden toString()]]></name>
+    <name><![CDATA[Dodgy code - Method calls toString() on an instance of a class that hasn't overridden toString()]]></name>
     <configKey><![CDATA[SPP_NON_USEFUL_TOSTRING]]></configKey>
     <description><![CDATA[
 
@@ -1678,7 +1678,7 @@
   </rule>
 
   <rule key="SCII_SPOILED_CHILD_INTERFACE_IMPLEMENTOR" priority="INFO">
-    <name><![CDATA[Style - Class implements interface by relying on unknowing superclass methods]]></name>
+    <name><![CDATA[Dodgy code - Class implements interface by relying on unknowing superclass methods]]></name>
     <configKey><![CDATA[SCII_SPOILED_CHILD_INTERFACE_IMPLEMENTOR]]></configKey>
     <description><![CDATA[
 
@@ -1717,7 +1717,7 @@
   </rule>
 
   <rule key="USS_USE_STRING_SPLIT" priority="INFO">
-    <name><![CDATA[Style - Method builds String array using String Tokenizing]]></name>
+    <name><![CDATA[Dodgy code - Method builds String array using String Tokenizing]]></name>
     <configKey><![CDATA[USS_USE_STRING_SPLIT]]></configKey>
     <description><![CDATA[
 
@@ -1749,7 +1749,7 @@
   </rule>
 
   <rule key="UAA_USE_ADD_ALL" priority="INFO">
-    <name><![CDATA[Style - Method uses simple loop to copy contents of one collection to another]]></name>
+    <name><![CDATA[Dodgy code - Method uses simple loop to copy contents of one collection to another]]></name>
     <configKey><![CDATA[UAA_USE_ADD_ALL]]></configKey>
     <description><![CDATA[
 
@@ -1762,7 +1762,7 @@
   </rule>
 
   <rule key="MRC_METHOD_RETURNS_CONSTANT" priority="INFO">
-    <name><![CDATA[Style - Private method only returns one constant value]]></name>
+    <name><![CDATA[Dodgy code - Private method only returns one constant value]]></name>
     <configKey><![CDATA[MRC_METHOD_RETURNS_CONSTANT]]></configKey>
     <description><![CDATA[
 
@@ -1786,7 +1786,7 @@
   </rule>
 
   <rule key="MOM_MISLEADING_OVERLOAD_MODEL" priority="INFO">
-    <name><![CDATA[Style - Class 'overloads' a method with both instance and static versions]]></name>
+    <name><![CDATA[Dodgy code - Class 'overloads' a method with both instance and static versions]]></name>
     <configKey><![CDATA[MOM_MISLEADING_OVERLOAD_MODEL]]></configKey>
     <description><![CDATA[
 
@@ -1797,7 +1797,7 @@
   </rule>
 
   <rule key="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS" priority="INFO">
-    <name><![CDATA[Style - Unconstrained method converts checked exception to unchecked]]></name>
+    <name><![CDATA[Dodgy code - Unconstrained method converts checked exception to unchecked]]></name>
     <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS]]></configKey>
     <description><![CDATA[
 
@@ -1809,7 +1809,7 @@
   </rule>
 
   <rule key="EXS_EXCEPTION_SOFTENING_HAS_CHECKED" priority="INFO">
-    <name><![CDATA[Style - Constrained method converts checked exception to unchecked instead of another allowable checked exception]]></name>
+    <name><![CDATA[Dodgy code - Constrained method converts checked exception to unchecked instead of another allowable checked exception]]></name>
     <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_HAS_CHECKED]]></configKey>
     <description><![CDATA[
 
@@ -1822,7 +1822,7 @@
   </rule>
 
   <rule key="EXS_EXCEPTION_SOFTENING_NO_CHECKED" priority="INFO">
-    <name><![CDATA[Style - Constrained method converts checked exception to unchecked]]></name>
+    <name><![CDATA[Dodgy code - Constrained method converts checked exception to unchecked]]></name>
     <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_NO_CHECKED]]></configKey>
     <description><![CDATA[
 
@@ -1835,7 +1835,7 @@
   </rule>
 
   <rule key="EXS_EXCEPTION_SOFTENING_RETURN_FALSE" priority="INFO">
-    <name><![CDATA[Style - method converts an exception into a boolean 'error code' value]]></name>
+    <name><![CDATA[Dodgy code - method converts an exception into a boolean 'error code' value]]></name>
     <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_RETURN_FALSE]]></configKey>
     <description><![CDATA[
 
@@ -1847,7 +1847,7 @@
   </rule>
 
   <rule key="CFS_CONFUSING_FUNCTION_SEMANTICS" priority="INFO">
-    <name><![CDATA[Style - Method returns modified parameter]]></name>
+    <name><![CDATA[Dodgy code - Method returns modified parameter]]></name>
     <configKey><![CDATA[CFS_CONFUSING_FUNCTION_SEMANTICS]]></configKey>
     <description><![CDATA[
 
@@ -1862,7 +1862,7 @@
   </rule>
 
   <rule key="JAO_JUNIT_ASSERTION_ODDITIES_ACTUAL_CONSTANT" priority="INFO">
-    <name><![CDATA[Style - Method passes constant to second (actual) assertion parameter]]></name>
+    <name><![CDATA[Dodgy code - Method passes constant to second (actual) assertion parameter]]></name>
     <configKey><![CDATA[JAO_JUNIT_ASSERTION_ODDITIES_ACTUAL_CONSTANT]]></configKey>
     <description><![CDATA[
 
@@ -1874,7 +1874,7 @@
   </rule>
 
   <rule key="JAO_JUNIT_ASSERTION_ODDITIES_INEXACT_DOUBLE" priority="INFO">
-    <name><![CDATA[Style - Method asserts that two doubles are exactly equal]]></name>
+    <name><![CDATA[Dodgy code - Method asserts that two doubles are exactly equal]]></name>
     <configKey><![CDATA[JAO_JUNIT_ASSERTION_ODDITIES_INEXACT_DOUBLE]]></configKey>
     <description><![CDATA[
 
@@ -1885,7 +1885,7 @@
   </rule>
 
   <rule key="JAO_JUNIT_ASSERTION_ODDITIES_BOOLEAN_ASSERT" priority="INFO">
-    <name><![CDATA[Style - Method asserts that a value is true or false]]></name>
+    <name><![CDATA[Dodgy code - Method asserts that a value is true or false]]></name>
     <configKey><![CDATA[JAO_JUNIT_ASSERTION_ODDITIES_BOOLEAN_ASSERT]]></configKey>
     <description><![CDATA[
 
@@ -1944,7 +1944,7 @@
   </rule>
 
   <rule key="WEM_WEAK_EXCEPTION_MESSAGING" priority="INFO">
-    <name><![CDATA[Style - Method throws exception with static message string]]></name>
+    <name><![CDATA[Dodgy code - Method throws exception with static message string]]></name>
     <configKey><![CDATA[WEM_WEAK_EXCEPTION_MESSAGING]]></configKey>
     <description><![CDATA[
 
@@ -2006,7 +2006,7 @@
   </rule>
 
   <rule key="LO_STUTTERED_MESSAGE" priority="INFO">
-    <name><![CDATA[Style - Method stutters exception message in logger]]></name>
+    <name><![CDATA[Dodgy code - Method stutters exception message in logger]]></name>
     <configKey><![CDATA[LO_STUTTERED_MESSAGE]]></configKey>
     <description><![CDATA[
 
@@ -2131,7 +2131,7 @@
   </rule>
 
   <rule key="DTEP_DEPRECATED_TYPESAFE_ENUM_PATTERN" priority="INFO">
-    <name><![CDATA[Style - Class appears to implement the old style type safe enum pattern]]></name>
+    <name><![CDATA[Dodgy code - Class appears to implement the old style type safe enum pattern]]></name>
     <configKey><![CDATA[DTEP_DEPRECATED_TYPESAFE_ENUM_PATTERN]]></configKey>
     <description><![CDATA[
 
@@ -2143,7 +2143,7 @@
   </rule>
 
   <rule key="SMA_STUTTERED_METHOD_ARGUMENTS" priority="INFO">
-    <name><![CDATA[Style - Code calls a method passing the same value to two different arguments]]></name>
+    <name><![CDATA[Dodgy code - Code calls a method passing the same value to two different arguments]]></name>
     <configKey><![CDATA[SMA_STUTTERED_METHOD_ARGUMENTS]]></configKey>
     <description><![CDATA[
 
@@ -2156,7 +2156,7 @@
   </rule>
 
   <rule key="TBP_TRISTATE_BOOLEAN_PATTERN" priority="INFO">
-    <name><![CDATA[Style - Method returns null for Boolean type]]></name>
+    <name><![CDATA[Dodgy code - Method returns null for Boolean type]]></name>
     <configKey><![CDATA[TBP_TRISTATE_BOOLEAN_PATTERN]]></configKey>
     <description><![CDATA[
 
@@ -2194,7 +2194,7 @@
   </rule>
 
   <rule key="IKNC_INCONSISTENT_HTTP_ATTRIBUTE_CASING" priority="INFO">
-    <name><![CDATA[Style - Method uses the same HttpSession attribute name but with different casing]]></name>
+    <name><![CDATA[Dodgy code - Method uses the same HttpSession attribute name but with different casing]]></name>
     <configKey><![CDATA[IKNC_INCONSISTENT_HTTP_ATTRIBUTE_CASING]]></configKey>
     <description><![CDATA[
 
@@ -2205,7 +2205,7 @@
   </rule>
 
   <rule key="IKNC_INCONSISTENT_HTTP_PARAM_CASING" priority="INFO">
-    <name><![CDATA[Style - Method uses the same HttpRequest parameter name but with different casing]]></name>
+    <name><![CDATA[Dodgy code - Method uses the same HttpRequest parameter name but with different casing]]></name>
     <configKey><![CDATA[IKNC_INCONSISTENT_HTTP_PARAM_CASING]]></configKey>
     <description><![CDATA[
 
@@ -2566,7 +2566,7 @@
   </rule>
 
   <rule key="UVA_USE_VAR_ARGS" priority="INFO">
-    <name><![CDATA[Style - Method defines parameter list with array as last argument, rather than vararg]]></name>
+    <name><![CDATA[Dodgy code - Method defines parameter list with array as last argument, rather than vararg]]></name>
     <configKey><![CDATA[UVA_USE_VAR_ARGS]]></configKey>
     <description><![CDATA[
 
@@ -2592,7 +2592,7 @@
   </rule>
 
   <rule key="SEC_SIDE_EFFECT_CONSTRUCTOR" priority="INFO">
-    <name><![CDATA[Style - Method uses a Side Effect Constructor]]></name>
+    <name><![CDATA[Dodgy code - Method uses a Side Effect Constructor]]></name>
     <configKey><![CDATA[SEC_SIDE_EFFECT_CONSTRUCTOR]]></configKey>
     <description><![CDATA[
 
@@ -2628,7 +2628,7 @@
   </rule>
 
   <rule key="STB_STACKED_TRY_BLOCKS" priority="INFO">
-    <name><![CDATA[Style - Method stacks similar try/catch blocks]]></name>
+    <name><![CDATA[Dodgy code - Method stacks similar try/catch blocks]]></name>
     <configKey><![CDATA[STB_STACKED_TRY_BLOCKS]]></configKey>
     <description><![CDATA[
 
@@ -2700,7 +2700,7 @@
   </rule>
 
   <rule key="CU_CLONE_USABILITY_OBJECT_RETURN" priority="INFO">
-    <name><![CDATA[Style - Clone method declares it returns an Object]]></name>
+    <name><![CDATA[Dodgy code - Clone method declares it returns an Object]]></name>
     <configKey><![CDATA[CU_CLONE_USABILITY_OBJECT_RETURN]]></configKey>
     <description><![CDATA[
 
@@ -2712,7 +2712,7 @@
   </rule>
 
   <rule key="CU_CLONE_USABILITY_MISMATCHED_RETURN" priority="INFO">
-    <name><![CDATA[Style - Clone method declares it returns a type different then the owning class]]></name>
+    <name><![CDATA[Dodgy code - Clone method declares it returns a type different then the owning class]]></name>
     <configKey><![CDATA[CU_CLONE_USABILITY_MISMATCHED_RETURN]]></configKey>
     <description><![CDATA[
 
@@ -2723,7 +2723,7 @@
   </rule>
 
   <rule key="CU_CLONE_USABILITY_THROWS" priority="INFO">
-    <name><![CDATA[Style - Clone method declares it throws CloneNotSupportedException]]></name>
+    <name><![CDATA[Dodgy code - Clone method declares it throws CloneNotSupportedException]]></name>
     <configKey><![CDATA[CU_CLONE_USABILITY_THROWS]]></configKey>
     <description><![CDATA[
 
@@ -2827,7 +2827,7 @@
   </rule>
 
   <rule key="CNC_COLLECTION_NAMING_CONFUSION" priority="INFO">
-    <name><![CDATA[Style - Collection variable is named with a different type of collection in the name]]></name>
+    <name><![CDATA[Dodgy code - Collection variable is named with a different type of collection in the name]]></name>
     <configKey><![CDATA[CNC_COLLECTION_NAMING_CONFUSION]]></configKey>
     <description><![CDATA[
 
@@ -2839,7 +2839,7 @@
   </rule>
 
   <rule key="PME_POOR_MANS_ENUM" priority="INFO">
-    <name><![CDATA[Style - Simple field is used like an enum]]></name>
+    <name><![CDATA[Dodgy code - Simple field is used like an enum]]></name>
     <configKey><![CDATA[PME_POOR_MANS_ENUM]]></configKey>
     <description><![CDATA[
 
@@ -2851,7 +2851,7 @@
   </rule>
 
   <rule key="UP_UNUSED_PARAMETER" priority="INFO">
-    <name><![CDATA[Style - Static or private method has unused parameters]]></name>
+    <name><![CDATA[Dodgy code - Static or private method has unused parameters]]></name>
     <configKey><![CDATA[UP_UNUSED_PARAMETER]]></configKey>
     <description><![CDATA[
 
@@ -3121,7 +3121,7 @@
   </rule>
 
   <rule key="CBC_CONTAINS_BASED_CONDITIONAL" priority="INFO">
-    <name><![CDATA[Style - This method uses an excessively complex conditional that can be replaced with Set.contains]]></name>
+    <name><![CDATA[Dodgy code - This method uses an excessively complex conditional that can be replaced with Set.contains]]></name>
     <configKey><![CDATA[CBC_CONTAINS_BASED_CONDITIONAL]]></configKey>
     <description><![CDATA[
 
@@ -3134,7 +3134,7 @@
   </rule>
 
   <rule key="OPM_OVERLY_PERMISSIVE_METHOD" priority="INFO">
-    <name><![CDATA[Style - This method is declared more permissively than is used in the code base]]></name>
+    <name><![CDATA[Dodgy code - This method is declared more permissively than is used in the code base]]></name>
     <configKey><![CDATA[OPM_OVERLY_PERMISSIVE_METHOD]]></configKey>
     <description><![CDATA[
 
@@ -3153,7 +3153,7 @@
   </rule>
 
   <rule key="CIS_TOSTRING_STORED_IN_FIELD" priority="INFO">
-    <name><![CDATA[Style - This method stores the value of a toString() call into a field]]></name>
+    <name><![CDATA[Dodgy code - This method stores the value of a toString() call into a field]]></name>
     <configKey><![CDATA[CIS_TOSTRING_STORED_IN_FIELD]]></configKey>
     <description><![CDATA[
 
@@ -3167,7 +3167,7 @@
   </rule>
 
   <rule key="CIS_STRING_PARSING_A_FIELD" priority="INFO">
-    <name><![CDATA[Style - This method parses a String that is a field]]></name>
+    <name><![CDATA[Dodgy code - This method parses a String that is a field]]></name>
     <configKey><![CDATA[CIS_STRING_PARSING_A_FIELD]]></configKey>
     <description><![CDATA[
 
