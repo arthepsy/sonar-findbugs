@@ -1201,12 +1201,6 @@
     <configKey><![CDATA[RV_EXCEPTION_NOT_THROWN]]></configKey>
   </rule>
 
-  <rule key="RV_RETURN_VALUE_IGNORED2">
-    <priority>MAJOR</priority>
-    <name><![CDATA[Correctness - Method ignores return value]]></name>
-    <configKey><![CDATA[RV_RETURN_VALUE_IGNORED2]]></configKey>
-  </rule>
-
   <rule key="NP_ALWAYS_NULL">
     <priority>CRITICAL</priority>
     <name><![CDATA[Correctness - Null pointer dereference]]></name>
@@ -2287,12 +2281,6 @@
     <priority>INFO</priority>
     <name><![CDATA[Experimental - Bad Applet Constructor relies on uninitialized AppletStub]]></name>
     <configKey><![CDATA[BAC_BAD_APPLET_CONSTRUCTOR]]></configKey>
-  </rule>
-
-  <rule key="UOE_USE_OBJECT_EQUALS">
-    <priority>INFO</priority>
-    <name><![CDATA[Experimental - Calls to equals on a final class that doesn't override Object's equals method]]></name>
-    <configKey><![CDATA[UOE_USE_OBJECT_EQUALS]]></configKey>
   </rule>
 
   <rule key="CD_CIRCULAR_DEPENDENCY">

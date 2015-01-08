@@ -4832,24 +4832,6 @@
       </chc>
       <chc>
         <rule-repo>findbugs</rule-repo>
-        <rule-key>UOE_USE_OBJECT_EQUALS</rule-key>
-        <prop>
-          <key>remediationFunction</key>
-          <txt>CONSTANT_ISSUE</txt>
-        </prop>
-        <prop>
-          <key>remediationFactor</key>
-          <val>0.0</val>
-          <txt>d</txt>
-        </prop>
-        <prop>
-          <key>offset</key>
-          <val>3.0</val>
-          <txt>h</txt>
-        </prop>
-      </chc>
-      <chc>
-        <rule-repo>findbugs</rule-repo>
         <rule-key>DM_GC</rule-key>
         <prop>
           <key>remediationFunction</key>
@@ -5067,24 +5049,6 @@
       <chc>
         <rule-repo>findbugs</rule-repo>
         <rule-key>RC_REF_COMPARISON</rule-key>
-        <prop>
-          <key>remediationFunction</key>
-          <txt>CONSTANT_ISSUE</txt>
-        </prop>
-        <prop>
-          <key>remediationFactor</key>
-          <val>0.0</val>
-          <txt>d</txt>
-        </prop>
-        <prop>
-          <key>offset</key>
-          <val>1.0</val>
-          <txt>h</txt>
-        </prop>
-      </chc>
-      <chc>
-        <rule-repo>findbugs</rule-repo>
-        <rule-key>RV_RETURN_VALUE_IGNORED2</rule-key>
         <prop>
           <key>remediationFunction</key>
           <txt>CONSTANT_ISSUE</txt>
