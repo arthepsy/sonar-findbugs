@@ -2601,10 +2601,58 @@
     <configKey><![CDATA[DMI_VACUOUS_CALL_TO_EASYMOCK_METHOD]]></configKey>
   </rule>
 
+  <rule key="CAA_COVARIANT_ARRAY_FIELD">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Covariant array assignment to a field]]></name>
+    <configKey><![CDATA[CAA_COVARIANT_ARRAY_FIELD]]></configKey>
+  </rule>
+
+  <rule key="CAA_COVARIANT_ARRAY_LOCAL">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Covariant array assignment to a local variable]]></name>
+    <configKey><![CDATA[CAA_COVARIANT_ARRAY_LOCAL]]></configKey>
+  </rule>
+
+  <rule key="CAA_COVARIANT_ARRAY_RETURN">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Covariant array is returned from the method]]></name>
+    <configKey><![CDATA[CAA_COVARIANT_ARRAY_RETURN]]></configKey>
+  </rule>
+
+  <rule key="CAA_COVARIANT_ARRAY_ELEMENT_STORE">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Possibly incompatible element is stored in covariant array]]></name>
+    <configKey><![CDATA[CAA_COVARIANT_ARRAY_ELEMENT_STORE]]></configKey>
+  </rule>
+
   <rule key="TLW_TWO_LOCK_NOTIFY">
     <priority>INFO</priority>
     <name><![CDATA[Multithreaded correctness - Notify with two locks held]]></name>
     <configKey><![CDATA[TLW_TWO_LOCK_NOTIFY]]></configKey>
+  </rule>
+
+  <rule key="MS_MUTABLE_COLLECTION">
+    <priority>INFO</priority>
+    <name><![CDATA[Malicious code vulnerability - Field is a mutable collection]]></name>
+    <configKey><![CDATA[MS_MUTABLE_COLLECTION]]></configKey>
+  </rule>
+
+  <rule key="MS_MUTABLE_COLLECTION_PKGPROTECT">
+    <priority>INFO</priority>
+    <name><![CDATA[Malicious code vulnerability - Field is a mutable collection which should be package protected]]></name>
+    <configKey><![CDATA[MS_MUTABLE_COLLECTION_PKGPROTECT]]></configKey>
+  </rule>
+
+  <rule key="UC_USELESS_VOID_METHOD">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Useless non-empty void method]]></name>
+    <configKey><![CDATA[UC_USELESS_VOID_METHOD]]></configKey>
+  </rule>
+
+  <rule key="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Return value of method without side effect is ignored]]></name>
+    <configKey><![CDATA[RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT]]></configKey>
   </rule>
 
   <rule key="LI_LAZY_INIT_INSTANCE">
@@ -2617,6 +2665,30 @@
     <priority>INFO</priority>
     <name><![CDATA[Multithreaded correctness - Synchronization performed on util.concurrent instance]]></name>
     <configKey><![CDATA[JLM_JSR166_UTILCONCURRENT_MONITORENTER]]></configKey>
+  </rule>
+
+  <rule key="IIL_PREPARE_STATEMENT_IN_LOOP">
+    <priority>INFO</priority>
+    <name><![CDATA[Performance - Method calls prepareStatement in a loop]]></name>
+    <configKey><![CDATA[IIL_PREPARE_STATEMENT_IN_LOOP]]></configKey>
+  </rule>
+
+  <rule key="IIL_ELEMENTS_GET_LENGTH_IN_LOOP">
+    <priority>INFO</priority>
+    <name><![CDATA[Performance - NodeList.getLength() called in a loop]]></name>
+    <configKey><![CDATA[IIL_ELEMENTS_GET_LENGTH_IN_LOOP]]></configKey>
+  </rule>
+
+  <rule key="IIL_PATTERN_COMPILE_IN_LOOP">
+    <priority>INFO</priority>
+    <name><![CDATA[Performance - Method calls Pattern.compile in a loop]]></name>
+    <configKey><![CDATA[IIL_PATTERN_COMPILE_IN_LOOP]]></configKey>
+  </rule>
+
+  <rule key="IIL_PATTERN_COMPILE_IN_LOOP_INDIRECT">
+    <priority>INFO</priority>
+    <name><![CDATA[Performance - Method compiles the regular expression in a loop]]></name>
+    <configKey><![CDATA[IIL_PATTERN_COMPILE_IN_LOOP_INDIRECT]]></configKey>
   </rule>
 
   <rule key="BRSA_BAD_RESULTSET_ACCESS">
@@ -2647,6 +2719,48 @@
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Method tightens nullness annotation on parameter]]></name>
     <configKey><![CDATA[NP_METHOD_PARAMETER_RELAXING_ANNOTATION]]></configKey>
+  </rule>
+
+  <rule key="CO_COMPARETO_INCORRECT_FLOATING">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - compareTo()/compare() incorrectly handles float or double value]]></name>
+    <configKey><![CDATA[CO_COMPARETO_INCORRECT_FLOATING]]></configKey>
+  </rule>
+
+  <rule key="UC_USELESS_CONDITION">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Condition has no effect]]></name>
+    <configKey><![CDATA[UC_USELESS_CONDITION]]></configKey>
+  </rule>
+
+  <rule key="UC_USELESS_CONDITION_TYPE">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Condition has no effect due to the variable type]]></name>
+    <configKey><![CDATA[UC_USELESS_CONDITION_TYPE]]></configKey>
+  </rule>
+
+  <rule key="RANGE_ARRAY_INDEX">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Array index is out of bounds]]></name>
+    <configKey><![CDATA[RANGE_ARRAY_INDEX]]></configKey>
+  </rule>
+
+  <rule key="RANGE_ARRAY_OFFSET">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Array offset is out of bounds]]></name>
+    <configKey><![CDATA[RANGE_ARRAY_OFFSET]]></configKey>
+  </rule>
+
+  <rule key="RANGE_ARRAY_LENGTH">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Array length is out of bounds]]></name>
+    <configKey><![CDATA[RANGE_ARRAY_LENGTH]]></configKey>
+  </rule>
+
+  <rule key="RANGE_STRING_INDEX">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - String index is out of bounds]]></name>
+    <configKey><![CDATA[RANGE_STRING_INDEX]]></configKey>
   </rule>
 
 </rules>

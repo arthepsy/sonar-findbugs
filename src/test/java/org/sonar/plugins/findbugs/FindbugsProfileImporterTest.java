@@ -68,7 +68,7 @@ public class FindbugsProfileImporterTest {
     RulesProfile profile = importer.importProfile(new InputStreamReader(input), ValidationMessages.create());
     List<ActiveRule> results = profile.getActiveRules();
 
-    assertThat(results).hasSize(201);
+    assertThat(results).hasSize(207);
     assertThat(profile.getActiveRule(FindbugsRuleRepository.REPOSITORY_KEY, "BC_IMPOSSIBLE_DOWNCAST")).isNotNull();
   }
 
@@ -124,7 +124,7 @@ public class FindbugsProfileImporterTest {
     RulesProfile profile = importer.importProfile(new StringReader(uncorrectFindbugsXml), messages);
     List<ActiveRule> results = profile.getActiveRules();
 
-    assertThat(results).hasSize(153);
+    assertThat(results).hasSize(159);
     assertThat(messages.getWarnings()).hasSize(1);
   }
 

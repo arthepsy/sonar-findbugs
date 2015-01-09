@@ -1,0 +1,3 @@
+<p>
+  The method calls NodeList.getLength() inside the loop and NodeList was produced by getElementsByTagName call. This NodeList doesn't store its length, but computes it every time in not very optimal way. Consider storing the length to the variable before the loop.
+</p>
