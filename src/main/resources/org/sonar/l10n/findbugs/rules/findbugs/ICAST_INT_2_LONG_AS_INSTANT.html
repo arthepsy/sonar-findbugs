@@ -1,5 +1,5 @@
 <p>
-  This code converts a 32-bit int value to a 64-bit long value, and then passes that value for a method parameter that requires an absolute time value. An absolute time value is the number of milliseconds since the standard base time known as "the epoch", namely January 1, 1970, 00:00:00 GMT. For example, the following method, intended to convert seconds since the epoc into a Date, is badly broken:
+  This code converts a 32-bit int value to a 64-bit long value, and then passes that value for a method parameter that requires an absolute time value. An absolute time value is the number of milliseconds since the standard base time known as "the epoch", namely January 1, 1970, 00:00:00 GMT. For example, the following method, intended to convert seconds since the epoch into a Date, is badly broken:
 </p>
 <pre>
 Date getDate(int seconds) { return new Date(seconds * 1000); }

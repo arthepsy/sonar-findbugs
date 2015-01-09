@@ -382,7 +382,7 @@
 
   <rule key="BX_UNBOXED_AND_COERCED_FOR_TERNARY_OPERATOR">
     <priority>MAJOR</priority>
-    <name><![CDATA[Correctness - Primitive value is unboxed and coerced for ternary operator]]></name>
+    <name><![CDATA[Performance - Primitive value is unboxed and coerced for ternary operator]]></name>
     <configKey><![CDATA[BX_UNBOXED_AND_COERCED_FOR_TERNARY_OPERATOR]]></configKey>
   </rule>
 
@@ -430,7 +430,7 @@
 
   <rule key="SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Security - Nonconstant string passed to execute method on an SQL statement]]></name>
+    <name><![CDATA[Security - Nonconstant string passed to execute or addBatch method on an SQL statement]]></name>
     <configKey><![CDATA[SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE]]></configKey>
     <tag>owasp-top10</tag>
     <tag>cwe</tag>
@@ -1179,7 +1179,7 @@
 
   <rule key="RV_DONT_JUST_NULL_CHECK_READLINE">
     <priority>MAJOR</priority>
-    <name><![CDATA[Dodgy code - Method discards result of readLine after checking if it is nonnull]]></name>
+    <name><![CDATA[Dodgy code - Method discards result of readLine after checking if it is non-null]]></name>
     <configKey><![CDATA[RV_DONT_JUST_NULL_CHECK_READLINE]]></configKey>
   </rule>
 
@@ -1209,7 +1209,7 @@
 
   <rule key="NP_STORE_INTO_NONNULL_FIELD">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Store of null value into field annotated NonNull]]></name>
+    <name><![CDATA[Correctness - Store of null value into field annotated @Nonnull]]></name>
     <configKey><![CDATA[NP_STORE_INTO_NONNULL_FIELD]]></configKey>
   </rule>
 
@@ -1221,7 +1221,7 @@
 
   <rule key="NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Dodgy code - Parameter must be nonnull but is marked as nullable]]></name>
+    <name><![CDATA[Dodgy code - Parameter must be non-null but is marked as nullable]]></name>
     <configKey><![CDATA[NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE]]></configKey>
   </rule>
 
@@ -1251,31 +1251,31 @@
 
   <rule key="NP_NULL_PARAM_DEREF_NONVIRTUAL">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Non-virtual method call passes null for nonnull parameter]]></name>
+    <name><![CDATA[Correctness - Non-virtual method call passes null for non-null parameter]]></name>
     <configKey><![CDATA[NP_NULL_PARAM_DEREF_NONVIRTUAL]]></configKey>
   </rule>
 
   <rule key="NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Method call passes null for nonnull parameter]]></name>
+    <name><![CDATA[Correctness - Method call passes null for non-null parameter]]></name>
     <configKey><![CDATA[NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS]]></configKey>
   </rule>
 
   <rule key="NP_NULL_PARAM_DEREF">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Method call passes null for nonnull parameter]]></name>
+    <name><![CDATA[Correctness - Method call passes null for non-null parameter]]></name>
     <configKey><![CDATA[NP_NULL_PARAM_DEREF]]></configKey>
   </rule>
 
   <rule key="NP_NONNULL_PARAM_VIOLATION">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Method call passes null to a nonnull parameter]]></name>
+    <name><![CDATA[Correctness - Method call passes null to a non-null parameter]]></name>
     <configKey><![CDATA[NP_NONNULL_PARAM_VIOLATION]]></configKey>
   </rule>
 
   <rule key="NP_NONNULL_RETURN_VIOLATION">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Method may return null, but is declared @NonNull]]></name>
+    <name><![CDATA[Correctness - Method may return null, but is declared @Nonnull]]></name>
     <configKey><![CDATA[NP_NONNULL_RETURN_VIOLATION]]></configKey>
   </rule>
 
@@ -1516,7 +1516,7 @@
 
   <rule key="INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Bad comparison of nonnegative value with negative constant]]></name>
+    <name><![CDATA[Correctness - Bad comparison of nonnegative value with negative constant or zero]]></name>
     <configKey><![CDATA[INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE]]></configKey>
   </rule>
 
@@ -2495,7 +2495,7 @@
 
   <rule key="NP_NONNULL_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR">
     <priority>CRITICAL</priority>
-    <name><![CDATA[Correctness - Nonnull field is not initialized]]></name>
+    <name><![CDATA[Correctness - Non-null field is not initialized]]></name>
     <configKey><![CDATA[NP_NONNULL_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR]]></configKey>
   </rule>
 
