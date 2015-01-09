@@ -10,7 +10,7 @@
 
   <groupId>org.codehaus.sonar-plugins.java</groupId>
   <artifactId>sonar-findbugs-plugin</artifactId>
-  <version>3.2-SNAPSHOT-20150109</version>
+  <version>3.2-SNAPSHOT</version>
   <packaging>sonar-plugin</packaging>
 
   <name>SonarQube Findbugs Plugin</name>
