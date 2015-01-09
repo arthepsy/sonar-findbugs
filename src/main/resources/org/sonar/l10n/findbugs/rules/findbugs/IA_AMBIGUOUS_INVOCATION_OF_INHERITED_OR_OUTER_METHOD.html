@@ -1,7 +1,9 @@
-<p> An inner class is invoking a method that could be resolved to either a inherited method or a method defined in an outer class. By the Java semantics,
-it will be resolved to invoke the inherited method, but this may not be want
-you intend. If you really intend to invoke the inherited method,
-invoke it by invoking the method on super (e.g., invoke super.foo(17)), and
-thus it will be clear to other readers of your code and to FindBugs
-that you want to invoke the inherited method, not the method in the outer class.
+<p>
+  An inner class is invoking a method that could be resolved to either a inherited method or a method defined in an outer class. For example, you invoke <code>foo(17)</code>, which is defined in both a superclass and in an outer method. By the Java semantics, it will be resolved to invoke the inherited method, but this may not be want you intend.
+</p>
+<p>
+  If you really intend to invoke the inherited method, invoke it by invoking the method on super (e.g., invoke super.foo(17)), and thus it will be clear to other readers of your code and to FindBugs that you want to invoke the inherited method, not the method in the outer class.
+</p>
+<p>
+  If you call <code>this.foo(17)</code>, then the inherited method will be invoked. However, since FindBugs only looks at classfiles, it can't tell the difference between an invocation of <code>this.foo(17)</code> and <code>foo(17)</code>, it will still complain about a potential ambiguous invocation.
 </p>

@@ -1,7 +1,13 @@
 <p>
-A String function is being invoked and "." is being passed
-to a parameter that takes a regular expression as an argument. Is this what you intended?
-For example
-s.replaceAll(".", "/") will return a String in which <em>every</em>
-character has been replaced by a / character.
+  A String function is being invoked and "." or "|" is being passed to a parameter that takes a regular expression as an argument. Is this what you intended? For example
 </p>
+<ul>
+  <li>s.replaceAll(".", "/") will return a String in which <em>every</em> character has been replaced by a '/' character
+  </li>
+  <li>s.split(".") <em>always</em> returns a zero length array of String
+  </li>
+  <li>"ab|cd".replaceAll("|", "/") will return "/a/b/|/c/d/"
+  </li>
+  <li>"ab|cd".split("|") will return array with six (!) elements: [, a, b, |, c, d]
+  </li>
+</ul>

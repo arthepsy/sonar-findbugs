@@ -1,8 +1,10 @@
-<p> The code synchronizes on a boxed primitive constant, such as an Boolean.
+<p>
+  The code synchronizes on a boxed primitive constant, such as an Boolean.
+</p>
 <pre>
 private static Boolean inited = Boolean.FALSE;
 ...
-  synchronized(inited) { 
+  synchronized(inited) {
     if (!inited) {
        init();
        inited = Boolean.TRUE;
@@ -10,6 +12,9 @@ private static Boolean inited = Boolean.FALSE;
      }
 ...
 </pre>
+<p>
+  Since there normally exist only two Boolean objects, this code could be synchronizing on the same object as other, unrelated code, leading to unresponsiveness and possible deadlock
 </p>
-<p>Since there normally exist only two Boolean objects, this code could be synchronizing on the same object as other, unrelated code, leading to unresponsiveness
-and possible deadlock</p>
+<p>
+  See CERT <a href="https://www.securecoding.cert.org/confluence/display/java/CON08-J.+Do+not+synchronize+on+objects+that+may+be+reused">CON08-J. Do not synchronize on objects that may be reused</a> for more information.
+</p>
