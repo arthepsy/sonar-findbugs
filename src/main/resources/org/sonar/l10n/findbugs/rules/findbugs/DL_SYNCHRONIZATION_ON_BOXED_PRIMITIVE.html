@@ -1,13 +1,17 @@
-<p> The code synchronizes on a boxed primitive constant, such as an Integer.
+<p>
+  The code synchronizes on a boxed primitive constant, such as an Integer.
+</p>
 <pre>
 private static Integer count = 0;
 ...
-  synchronized(count) { 
+  synchronized(count) {
      count++;
      }
 ...
 </pre>
+<p>
+  Since Integer objects can be cached and shared, this code could be synchronizing on the same object as other, unrelated code, leading to unresponsiveness and possible deadlock
 </p>
-<p>Since Integer objects can be cached and shared,
-this code could be synchronizing on the same object as other, unrelated code, leading to unresponsiveness
-and possible deadlock</p>
+<p>
+  See CERT <a href="https://www.securecoding.cert.org/confluence/display/java/CON08-J.+Do+not+synchronize+on+objects+that+may+be+reused">CON08-J. Do not synchronize on objects that may be reused</a> for more information.
+</p>

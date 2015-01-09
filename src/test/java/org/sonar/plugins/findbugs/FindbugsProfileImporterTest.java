@@ -57,7 +57,7 @@ public class FindbugsProfileImporterTest {
     RulesProfile profile = importer.importProfile(new InputStreamReader(input), ValidationMessages.create());
     List<ActiveRule> results = profile.getActiveRules();
 
-    assertThat(results).hasSize(18);
+    assertThat(results).hasSize(20);
     assertThat(profile.getActiveRule(FindbugsRuleRepository.REPOSITORY_KEY, "EC_INCOMPATIBLE_ARRAY_COMPARE")).isNotNull();
     assertThat(profile.getActiveRule(FindbugsRuleRepository.REPOSITORY_KEY, "BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY")).isNotNull();
   }
@@ -68,7 +68,7 @@ public class FindbugsProfileImporterTest {
     RulesProfile profile = importer.importProfile(new InputStreamReader(input), ValidationMessages.create());
     List<ActiveRule> results = profile.getActiveRules();
 
-    assertThat(results).hasSize(180);
+    assertThat(results).hasSize(207);
     assertThat(profile.getActiveRule(FindbugsRuleRepository.REPOSITORY_KEY, "BC_IMPOSSIBLE_DOWNCAST")).isNotNull();
   }
 
@@ -78,7 +78,7 @@ public class FindbugsProfileImporterTest {
     RulesProfile profile = importer.importProfile(new InputStreamReader(input), ValidationMessages.create());
     List<ActiveRule> results = profile.getActiveRules();
 
-    assertThat(results).hasSize(11);
+    assertThat(results).hasSize(13);
     assertThat(profile.getActiveRule(FindbugsRuleRepository.REPOSITORY_KEY, "RC_REF_COMPARISON_BAD_PRACTICE")).isNotNull();
   }
 
@@ -124,7 +124,7 @@ public class FindbugsProfileImporterTest {
     RulesProfile profile = importer.importProfile(new StringReader(uncorrectFindbugsXml), messages);
     List<ActiveRule> results = profile.getActiveRules();
 
-    assertThat(results).hasSize(139);
+    assertThat(results).hasSize(159);
     assertThat(messages.getWarnings()).hasSize(1);
   }
 
@@ -135,7 +135,7 @@ public class FindbugsProfileImporterTest {
     RulesProfile profile = importer.importProfile(new StringReader(uncorrectFindbugsXml), messages);
     List<ActiveRule> results = profile.getActiveRules();
 
-    assertThat(results).hasSize(10);
+    assertThat(results).hasSize(12);
     assertThat(messages.getWarnings()).hasSize(1);
   }
 }

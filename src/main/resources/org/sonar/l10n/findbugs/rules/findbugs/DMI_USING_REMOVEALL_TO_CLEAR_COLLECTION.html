@@ -1,3 +1,3 @@
-<p> If you want to remove all elements from a collection <code>c</code>, use <code>c.clear</code>,
-not <code>c.removeAll(c)</code>.
-	</p>
+<p>
+  If you want to remove all elements from a collection <code>c</code>, use <code>c.clear</code>, not <code>c.removeAll(c)</code>. Calling <code>c.removeAll(c)</code> to clear a collection is less clear, susceptible to errors from typos, less efficient and for some collections, might throw a <code>ConcurrentModificationException</code>.
+</p>

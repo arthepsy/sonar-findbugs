@@ -1,6 +1,6 @@
 <p>
-			  There is a statement or branch that if executed guarantees that
-			  a value is null at this point, and that 
-			  value that is guaranteed to be dereferenced
-			  (except on forward paths involving runtime exceptions).
-			  </p>
+  There is a statement or branch that if executed guarantees that a value is null at this point, and that value that is guaranteed to be dereferenced (except on forward paths involving runtime exceptions).
+</p>
+<p>
+  Note that a check such as <code>if (x == null) throw new NullPointerException();</code> is treated as a dereference of <code>x</code>.
+</p>

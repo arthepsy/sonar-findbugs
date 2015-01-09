@@ -629,9 +629,6 @@
     <Bug pattern="DP_DO_INSIDE_DO_PRIVILEGED"/>
   </Match>
   <Match>
-    <Bug pattern="RV_RETURN_VALUE_IGNORED2"/>
-  </Match>
-  <Match>
     <Bug pattern="RI_REDUNDANT_INTERFACES"/>
   </Match>
   <Match>
