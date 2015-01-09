@@ -25,3 +25,5 @@
     Removed rules:
     - `CD_CIRCULAR_DEPENDENCY`  
 
+- Integrate find-sec-bugs 1.3.0 (+56 rules)  
+
