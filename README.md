@@ -3,6 +3,9 @@
 
 ## ChangeLog
 
+### 2015-01-09  
+- Update rule categories and descriptions (from FindBugs 3.0.0)  
+
 ### 2015-01-08  
 - Remove old and unused rules:
     - `UOE_USE_OBJECT_EQUALS` (removed from FindBugs at 2010-09-14)
