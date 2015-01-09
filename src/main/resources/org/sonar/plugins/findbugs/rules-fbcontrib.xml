@@ -1,5 +1,5 @@
 <rules>
-  <!-- fb contrib version 6.0.0 -->
+  <!-- fbcontrib version 6.1.0-SNAPSHOT-20150107 -->
   <rule key="ISB_INEFFICIENT_STRING_BUFFERING" priority="INFO">
     <name><![CDATA[Performance - Method passes simple concatenating string in StringBuffer or StringBuilder append]]></name>
     <configKey><![CDATA[ISB_INEFFICIENT_STRING_BUFFERING]]></configKey>
@@ -29,7 +29,7 @@
 			}<br/>
 			</code><br/>
 
-			which involves a temporary <code>StringBuilder</code>, which is completely unneccessary.  To prevent this from happening, simply do:<br/>
+			which involves a temporary <code>StringBuilder</code>, which is completely unnecessary.  To prevent this from happening, simply do:<br/>
 
 			<code>
 			StringBuilder sb = new StringBuilder();<br/>
@@ -66,7 +66,7 @@
 			does not suffer the potential for <code>NullPointerException</code>s, and is easier to read.</p>
 
 			<p>
-			Keep in mind that Java compiles simple <code>String</code> Concatenation to use <code>StringBuilder</code>s, so you may see this bug even when you don't use <code>StringBuilder</code>s explicitly.
+			Keep in mind that Java compiles simple <code>String</code> concatenation to use <code>StringBuilder</code>s, so you may see this bug even when you don't use <code>StringBuilder</code>s explicitly.
 			</p>
 
 			<p>
@@ -103,7 +103,7 @@
   </rule>
 
   <rule key="CC_CYCLOMATIC_COMPLEXITY" priority="INFO">
-    <name><![CDATA[Style - Method is excessively complex]]></name>
+    <name><![CDATA[Dodgy code - Method is excessively complex]]></name>
     <configKey><![CDATA[CC_CYCLOMATIC_COMPLEXITY]]></configKey>
     <description><![CDATA[
 
@@ -115,7 +115,7 @@
   </rule>
 
   <rule key="OCP_OVERLY_CONCRETE_PARAMETER" priority="INFO">
-    <name><![CDATA[Style - Method needlessly defines parameter with concrete classes]]></name>
+    <name><![CDATA[Dodgy code - Method needlessly defines parameter with concrete classes]]></name>
     <configKey><![CDATA[OCP_OVERLY_CONCRETE_PARAMETER]]></configKey>
     <description><![CDATA[
 
@@ -123,11 +123,33 @@
 			interface or super class are used. Consider increasing the abstraction of the interface to
 			make low impact changes easier to accomplish in the future.</p>
 
+			<p>Take the following example:<br/>
+				<code>
+					private void appendToList(ArrayList<String> list) {<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;if (list.size() < 100) {<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.add("Foo");<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					}<br/>
+				</code>
+
+				The parameter list is currently defined as an <code>ArrayList</code>, which is a concrete implementation of the <code>List</code> interface.
+				Specifying <code>ArrayList</code> is unnecessary here, because we aren't using any <code>ArrayList</code>-specific methods (like <code>ensureCapacity()</code> or <code>trimToSize()</code>).
+				Instead of using the concrete definition, it is better to do something like:<br/>
+				<code>
+					private void appendToList(List<String> list) {<br/>
+					...<br/>
+				</code>
+				If the design ever changes, e.g. a <code>LinkedList</code> is used instead, this code won't have to change.
+
+			</p>
+
+			<p>IDEs tend to have tools to help generalize parameters.  For example, in Eclipse, the refactoring tool <a href="http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-menu-refactor.htm">Generalize Declared Type</a> helps find an appropriate level of concreteness.</p>
+
 		]]></description>
   </rule>
 
   <rule key="LII_LIST_INDEXED_ITERATING" priority="INFO">
-    <name><![CDATA[Style - Method uses integer based for loops to iterate over a List]]></name>
+    <name><![CDATA[Dodgy code - Method uses integer based for loops to iterate over a List]]></name>
     <configKey><![CDATA[LII_LIST_INDEXED_ITERATING]]></configKey>
     <description><![CDATA[
 
@@ -140,7 +162,7 @@
   </rule>
 
   <rule key="UCC_UNRELATED_COLLECTION_CONTENTS" priority="INFO">
-    <name><![CDATA[Style - Method adds unrelated types to collection or array]]></name>
+    <name><![CDATA[Dodgy code - Method adds unrelated types to collection or array]]></name>
     <configKey><![CDATA[UCC_UNRELATED_COLLECTION_CONTENTS]]></configKey>
     <description><![CDATA[
 
@@ -152,7 +174,7 @@
   </rule>
 
   <rule key="DRE_DECLARED_RUNTIME_EXCEPTION" priority="INFO">
-    <name><![CDATA[Style - Method declares RuntimeException in throws clause]]></name>
+    <name><![CDATA[Dodgy code - Method declares RuntimeException in throws clause]]></name>
     <configKey><![CDATA[DRE_DECLARED_RUNTIME_EXCEPTION]]></configKey>
     <description><![CDATA[
 
@@ -165,7 +187,7 @@
   </rule>
 
   <rule key="CE_CLASS_ENVY" priority="INFO">
-    <name><![CDATA[Style - Method excessively uses methods of another class]]></name>
+    <name><![CDATA[Dodgy code - Method excessively uses methods of another class]]></name>
     <configKey><![CDATA[CE_CLASS_ENVY]]></configKey>
     <description><![CDATA[
 
@@ -179,7 +201,7 @@
   </rule>
 
   <rule key="LSC_LITERAL_STRING_COMPARISON" priority="INFO">
-    <name><![CDATA[Style - Method makes literal string comparisons passing the literal as an argument]]></name>
+    <name><![CDATA[Dodgy code - Method makes literal string comparisons passing the literal as an argument]]></name>
     <configKey><![CDATA[LSC_LITERAL_STRING_COMPARISON]]></configKey>
     <description><![CDATA[
 
@@ -226,7 +248,7 @@
   </rule>
 
   <rule key="PL_PARALLEL_LISTS" priority="INFO">
-    <name><![CDATA[Style - Class defines two or more one for one associated lists or arrays]]></name>
+    <name><![CDATA[Dodgy code - Class defines two or more one for one associated lists or arrays]]></name>
     <configKey><![CDATA[PL_PARALLEL_LISTS]]></configKey>
     <description><![CDATA[
 
@@ -255,7 +277,7 @@
   </rule>
 
   <rule key="FP_FINAL_PARAMETERS" priority="INFO">
-    <name><![CDATA[Style - Method does not define a parameter as final, but could]]></name>
+    <name><![CDATA[Dodgy code - Method does not define a parameter as final, but could]]></name>
     <configKey><![CDATA[FP_FINAL_PARAMETERS]]></configKey>
     <description><![CDATA[
 
@@ -272,7 +294,7 @@
   </rule>
 
   <rule key="ACEM_ABSTRACT_CLASS_EMPTY_METHODS" priority="INFO">
-    <name><![CDATA[Style - Empty method could be declared abstract]]></name>
+    <name><![CDATA[Dodgy code - Empty method could be declared abstract]]></name>
     <configKey><![CDATA[ACEM_ABSTRACT_CLASS_EMPTY_METHODS]]></configKey>
     <description><![CDATA[
 
@@ -308,7 +330,7 @@
   </rule>
 
   <rule key="NCMU_NON_COLLECTION_METHOD_USE" priority="INFO">
-    <name><![CDATA[Style - Method uses old non collections interface methods]]></name>
+    <name><![CDATA[Dodgy code - Method uses old non collections interface methods]]></name>
     <configKey><![CDATA[NCMU_NON_COLLECTION_METHOD_USE]]></configKey>
     <description><![CDATA[
 
@@ -343,7 +365,7 @@
   </rule>
 
   <rule key="SMII_STATIC_METHOD_INSTANCE_INVOCATION" priority="INFO">
-    <name><![CDATA[Style - Method calls static method on instance reference]]></name>
+    <name><![CDATA[Dodgy code - Method calls static method on instance reference]]></name>
     <configKey><![CDATA[SMII_STATIC_METHOD_INSTANCE_INVOCATION]]></configKey>
     <description><![CDATA[
 
@@ -356,12 +378,12 @@
   </rule>
 
   <rule key="STS_SPURIOUS_THREAD_STATES" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method calls wait, notify or notifyAll on a Thread instance]]></name>
+    <name><![CDATA[Multithreaded correctness - Method calls wait, notify or notifyAll on a Thread instance]]></name>
     <configKey><![CDATA[STS_SPURIOUS_THREAD_STATES]]></configKey>
     <description><![CDATA[
 
 			<p>This method invokes the methods wait, notify or notifyAll on a Thread instance.
-			Doing so will confuse the internal thread state behaviour causing spurious thread
+			Doing so will confuse the internal thread state behavior causing spurious thread
 			wakeups/sleeps because the internal mechanism also uses the thread instance for its
 			notifications.</p>
 
@@ -447,7 +469,6 @@
 			</code>
 			</p>
 
-
 		]]></description>
   </rule>
 
@@ -493,7 +514,6 @@
 			float f = 1.234f;<br/>
 			</code>
 			</p>
-
 
 		]]></description>
   </rule>
@@ -570,19 +590,42 @@
   </rule>
 
   <rule key="USBR_UNNECESSARY_STORE_BEFORE_RETURN" priority="INFO">
-    <name><![CDATA[Style - Method stores return result in local before immediately returning it]]></name>
+    <name><![CDATA[Dodgy code - Method stores return result in local before immediately returning it]]></name>
     <configKey><![CDATA[USBR_UNNECESSARY_STORE_BEFORE_RETURN]]></configKey>
     <description><![CDATA[
 
 			<p>This method stores the return result in a local variable, and then immediately
 			returns the local variable. It would be simpler just to return the value that is
 			assigned to the local variable, directly.</p>
+			<p>
+				Instead of the following: <br/>
+				<code>
+				public float average(int[] arr) { <br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;float sum = 0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i < arr.length; i++) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum += arr[i];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;float ave = sum / arr.length;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return ave;<br/>
+				}<br/>
+				</code>
+				simply change the method to return the result of the division: <br/>
+				<code>
+				public float average(int[] arr) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;float sum = 0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i < arr.length; i++) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum += arr[i];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;<b>return sum / arr.length;</b><br/>
+				}
+				</code>
+			</p>
 
 		]]></description>
   </rule>
 
   <rule key="COM_COPIED_OVERRIDDEN_METHOD" priority="INFO">
-    <name><![CDATA[Style - Method is implemented with an exact copy of its superclass's method]]></name>
+    <name><![CDATA[Dodgy code - Method is implemented with an exact copy of its superclass's method]]></name>
     <configKey><![CDATA[COM_COPIED_OVERRIDDEN_METHOD]]></configKey>
     <description><![CDATA[
 
@@ -628,7 +671,7 @@
   </rule>
 
   <rule key="CBX_CUSTOM_BUILT_XML" priority="INFO">
-    <name><![CDATA[Style - Method builds XML strings through adhoc concatenation]]></name>
+    <name><![CDATA[Dodgy code - Method builds XML strings through ad hoc concatenation]]></name>
     <configKey><![CDATA[CBX_CUSTOM_BUILT_XML]]></configKey>
     <description><![CDATA[
 
@@ -645,7 +688,7 @@
     <configKey><![CDATA[BSB_BLOATED_SYNCHRONIZED_BLOCK]]></configKey>
     <description><![CDATA[
 
-			<p>This methods implements a synchronized block, but the code found at the beginning
+			<p>This method implements a synchronized block, but the code found at the beginning
 			of this block only accesses local variables, and not member variables, or this.
 			To be better performance move the code that access local variables only, above the
 			synchronized block, and leave the synchronized block only for field accesses, or access
@@ -668,7 +711,7 @@
   </rule>
 
   <rule key="SCR_SLOPPY_CLASS_REFLECTION" priority="INFO">
-    <name><![CDATA[Style - Method accesses statically bound class with Class.forName]]></name>
+    <name><![CDATA[Dodgy code - Method accesses statically bound class with Class.forName]]></name>
     <configKey><![CDATA[SCR_SLOPPY_CLASS_REFLECTION]]></configKey>
     <description><![CDATA[
 
@@ -681,7 +724,7 @@
   </rule>
 
   <rule key="AWCBR_ARRAY_WRAPPED_CALL_BY_REFERENCE" priority="INFO">
-    <name><![CDATA[Style - Method uses 1 element array to simulate call by reference]]></name>
+    <name><![CDATA[Dodgy code - Method uses 1 element array to simulate call by reference]]></name>
     <configKey><![CDATA[AWCBR_ARRAY_WRAPPED_CALL_BY_REFERENCE]]></configKey>
     <description><![CDATA[
 
@@ -805,7 +848,6 @@
 			</code>
 			</p>
 
-
 		]]></description>
   </rule>
 
@@ -821,7 +863,7 @@
 	       variables, even after the owning instance has been reclaimed. It is almost a certainty that
 	       you want to use static based ThreadLocal variables.</p>
 
-	   ]]></description>
+		]]></description>
   </rule>
 
   <rule key="LSYC_LOCAL_SYNCHRONIZED_COLLECTION" priority="INFO">
@@ -858,7 +900,7 @@
   </rule>
 
   <rule key="NOS_NON_OWNED_SYNCHRONIZATION" priority="INFO">
-    <name><![CDATA[Style - Class uses non owned variables to synchronize on]]></name>
+    <name><![CDATA[Dodgy code - Class uses non owned variables to synchronize on]]></name>
     <configKey><![CDATA[NOS_NON_OWNED_SYNCHRONIZATION]]></configKey>
     <description><![CDATA[
 
@@ -1008,7 +1050,7 @@
   </rule>
 
   <rule key="ITC_INHERITANCE_TYPE_CHECKING" priority="INFO">
-    <name><![CDATA[Style - Method uses instanceof on multiple types to arbitrate logic]]></name>
+    <name><![CDATA[Dodgy code - Method uses instanceof on multiple types to arbitrate logic]]></name>
     <configKey><![CDATA[ITC_INHERITANCE_TYPE_CHECKING]]></configKey>
     <description><![CDATA[
 
@@ -1047,7 +1089,7 @@
   </rule>
 
   <rule key="UTA_USE_TO_ARRAY" priority="INFO">
-    <name><![CDATA[Style - Method manually creates array from collection]]></name>
+    <name><![CDATA[Dodgy code - Method manually creates array from collection]]></name>
     <configKey><![CDATA[UTA_USE_TO_ARRAY]]></configKey>
     <description><![CDATA[
 
@@ -1079,7 +1121,7 @@
 
 			<p>This method passes a constant literal <code>String</code> of length 1 as a parameter to a method, that
 			exposes a similar method that takes a <code>char</code>. It is simpler and more expedient to handle one
-			character, rather than a <code>String</code.</p>
+			character, rather than a <code>String</code>.</p>
 
 			<p>
 			Instead of making calls like: <br/>
@@ -1087,6 +1129,7 @@
 			String myString = ... <br/>
 			if (myString.indexOf("e") != -1) {<br/>
 			int i = myString.lastIndexOf("e");<br/>
+			System.out.println(myString + ":" + i);  //the Java compiler will use a StringBuilder internally here [builder.append(":")]<br/>
 			...<br/>
 			return myString.replace("m","z");<br/>
 			}<br/>
@@ -1097,6 +1140,7 @@
 			String myString = ... <br/>
 			if (myString.indexOf('e') != -1) {<br/>
 			int i = myString.lastIndexOf('e');<br/>
+			System.out.println(myString + ':' + i);  //the Java compiler will use a StringBuilder internally here [builder.append(':')]<br/>
 			...<br/>
 			return myString.replace('m','z');<br/>
 			}<br/>
@@ -1119,7 +1163,7 @@
   </rule>
 
   <rule key="URV_UNRELATED_RETURN_VALUES" priority="INFO">
-    <name><![CDATA[Style - Method returns different types of unrelated Objects]]></name>
+    <name><![CDATA[Dodgy code - Method returns different types of unrelated Objects]]></name>
     <configKey><![CDATA[URV_UNRELATED_RETURN_VALUES]]></configKey>
     <description><![CDATA[
 
@@ -1130,7 +1174,7 @@
   </rule>
 
   <rule key="URV_CHANGE_RETURN_TYPE" priority="INFO">
-    <name><![CDATA[Style - Method returns more specific type of object than declared]]></name>
+    <name><![CDATA[Dodgy code - Method returns more specific type of object than declared]]></name>
     <configKey><![CDATA[URV_CHANGE_RETURN_TYPE]]></configKey>
     <description><![CDATA[
 
@@ -1143,7 +1187,7 @@
   </rule>
 
   <rule key="URV_INHERITED_METHOD_WITH_RELATED_TYPES" priority="INFO">
-    <name><![CDATA[Style - Inherited method returns more specific type of object than declared]]></name>
+    <name><![CDATA[Dodgy code - Inherited method returns more specific type of object than declared]]></name>
     <configKey><![CDATA[URV_INHERITED_METHOD_WITH_RELATED_TYPES]]></configKey>
     <description><![CDATA[
 
@@ -1242,12 +1286,14 @@
   </rule>
 
   <rule key="SPP_USE_ISNAN" priority="INFO">
-    <name><![CDATA[Correctness - Method compares a double to Double.NAN]]></name>
+    <name><![CDATA[Correctness - Method incorrectly compares a floating point number to NaN]]></name>
     <configKey><![CDATA[SPP_USE_ISNAN]]></configKey>
     <description><![CDATA[
 
-			<p>This method compares a double or float to the constant Double.NaN or Float.NaN. You should use
-			Double.isNaN(d) or Float.isNaN(f) if a primitive; or d.isNaN() or f.isNaN() if a boxed double, instead.</p>
+			<p>This method compares a double or float to the constant <code>Double.NaN</code> or <code>Float.NaN</code>.
+			You should use
+			<code>Double.isNaN(d)</code> or <code>Float.isNaN(f)</code>
+			 if the variable is a primitive. If using a boxed primitive <code>d.isNaN()</code> or <code>f.isNaN()</code> should be used.</p>
 
 		]]></description>
   </rule>
@@ -1331,18 +1377,35 @@
   </rule>
 
   <rule key="SPP_SUSPECT_STRING_TEST" priority="INFO">
-    <name><![CDATA[Correctness - Method treats null and normal strings differently than an empty strings]]></name>
+    <name><![CDATA[Correctness - Method possibly mixes up normal strings and empty strings in branching logic]]></name>
     <configKey><![CDATA[SPP_SUSPECT_STRING_TEST]]></configKey>
     <description><![CDATA[
 
 			<p>This method tests a string, and groups null values with real strings, leaving empty strings as another
-			case. This might be perfectly valid, but normally, null strings and empty strings are logically handled the same way,
+			case. That is, FindBugs has detected a structure like: <br/>
+			<code>
+			String a = null, b = "", c = "someString"; <br/>
+			...<br/>
+			String testStr = ...;  //one of a, b or c<br/>
+			if (<b>FLAWED_TEST_LOGIC</b>) { <br/>
+			// Strings a and c fall into this branch... which is not typical.  <br/>
+			} else { <br/>
+			// String b falls into this branch. <br/>
+			} <br/>
+			</code>
+
+			This might be perfectly valid, but normally, null strings and empty strings are logically handled the same way,
 			and so this test may be flawed.</p>
-			<p>Pattern found is one of the following
-			<pre>if ((s == null) || (s.length() > 0))</pre> -- did you mean ((s == null) || (s.length() == 0))?
-			<pre>if ((s == null) || (s.length() != 0))</pre> -- did you mean ((s == null) || (s.length() == 0))?
-			<pre>if ((s != null) && (s.length() == 0))</pre> -- did you mean ((s != null) && (s.length() > 0))?
-			or perhaps ((s == null) || (s.length() == 0))?
+			<p>Pattern found is one of the following:
+			<ul>
+				<li><code>if ((s == null) || (s.length() > 0))</code> --- did you mean
+				<code>((s == null) || (s.length() == 0))</code>?</li>
+				<li><code>if ((s == null) || (s.length() != 0))</code> -- did you mean
+				<code>((s == null) || (s.length() == 0))</code>? </li>
+				<li><code>if ((s != null) && (s.length() == 0))</code> -- did you mean
+				<code>((s != null) && (s.length() > 0))</code> or perhaps
+				<code>((s == null) || (s.length() == 0))</code>? </li>
+			</ul>
 			</p>
 
 		]]></description>
@@ -1373,7 +1436,7 @@
   </rule>
 
   <rule key="SPP_USE_CONTAINSKEY" priority="INFO">
-    <name><![CDATA[Style - Method calls keySet() just to call contains, use containsKey instead]]></name>
+    <name><![CDATA[Dodgy code - Method calls keySet() just to call contains, use containsKey instead]]></name>
     <configKey><![CDATA[SPP_USE_CONTAINSKEY]]></configKey>
     <description><![CDATA[
 
@@ -1383,7 +1446,7 @@
   </rule>
 
   <rule key="SPP_USE_ISEMPTY" priority="INFO">
-    <name><![CDATA[Style - Method checks the size of a collection against zero rather than using isEmpty()]]></name>
+    <name><![CDATA[Dodgy code - Method checks the size of a collection against zero rather than using isEmpty()]]></name>
     <configKey><![CDATA[SPP_USE_ISEMPTY]]></configKey>
     <description><![CDATA[
 
@@ -1394,7 +1457,7 @@
   </rule>
 
   <rule key="SPP_USE_GETPROPERTY" priority="INFO">
-    <name><![CDATA[Style - Method calls getProperties just to get one property, use getProperty instead]]></name>
+    <name><![CDATA[Dodgy code - Method calls getProperties just to get one property, use getProperty instead]]></name>
     <configKey><![CDATA[SPP_USE_GETPROPERTY]]></configKey>
     <description><![CDATA[
 
@@ -1409,7 +1472,7 @@
   </rule>
 
   <rule key="SPP_SERIALVER_SHOULD_BE_PRIVATE" priority="INFO">
-    <name><![CDATA[Style - Class defines a serialVersionUID as non private]]></name>
+    <name><![CDATA[Dodgy code - Class defines a serialVersionUID as non private]]></name>
     <configKey><![CDATA[SPP_SERIALVER_SHOULD_BE_PRIVATE]]></configKey>
     <description><![CDATA[
 
@@ -1427,7 +1490,7 @@
     <description><![CDATA[
 
 			<p>This method compares two strings with compareToIgnoreCase or equalsIgnoreCase, after having
-			called toUpperCase or toLowerCase on the string in question. As you are comparing with out
+			called toUpperCase or toLowerCase on the string in question. As you are comparing without
 			concern to case, the toUpperCase or toLowerCase calls are pointless and can be removed.</p>
 
 		]]></description>
@@ -1446,18 +1509,18 @@
   </rule>
 
   <rule key="SPP_EMPTY_CASING" priority="INFO">
-    <name><![CDATA[Style - Method passes an empty string to equalsIgnoreCase or compareToIgnoreCase]]></name>
+    <name><![CDATA[Dodgy code - Method passes an empty string to equalsIgnoreCase or compareToIgnoreCase]]></name>
     <configKey><![CDATA[SPP_EMPTY_CASING]]></configKey>
     <description><![CDATA[
 
 			<p>This method passes the empty string "" to equalsIgnoreCase or compareToIgnoreCase, as the empty string
-			is not case sensitive using equals is simpler. It would be even simpler to do a length() == 0 test.</p>
+			is not case-sensitive using equals is simpler. It would be even simpler to do a length() == 0 test.</p>
 
 		]]></description>
   </rule>
 
   <rule key="SPP_TEMPORARY_TRIM" priority="INFO">
-    <name><![CDATA[Style - Method trims a String temporarily]]></name>
+    <name><![CDATA[Dodgy code - Method trims a String temporarily]]></name>
     <configKey><![CDATA[SPP_TEMPORARY_TRIM]]></configKey>
     <description><![CDATA[
 
@@ -1475,9 +1538,9 @@
     <configKey><![CDATA[SPP_STRINGBUILDER_IS_MUTABLE]]></configKey>
     <description><![CDATA[
 
-			<p>This method calls StringBuilder.append and assigns the results to the same StringBuilder as</p>
-			<pre>sb = sb.append("foo")</pre>
-			<p>As StringBuilder is mutable this is not necessary.
+			<p>This method calls StringBuilder.append and assigns the results to the same StringBuilder like:</p>
+			<code>sb = sb.append("foo")</code>
+			<p>StringBuilder is mutable this is not necessary.
 			This is also true of StringBuffer.</p>
 
 		]]></description>
@@ -1541,15 +1604,15 @@
   </rule>
 
   <rule key="SPP_NON_USEFUL_TOSTRING" priority="INFO">
-    <name><![CDATA[Style - Method calls toString() on an instance of a class that hasn't overridden toString()]]></name>
+    <name><![CDATA[Dodgy code - Method calls toString() on an instance of a class that hasn't overridden toString()]]></name>
     <configKey><![CDATA[SPP_NON_USEFUL_TOSTRING]]></configKey>
     <description><![CDATA[
 
 	       <p>This method calls toString() on an object that hasn't overridden the toString() method, and thus relies on
 	       the version found in java.lang.Object. This string is just a raw display of the object's class and location, and
-	       provides no information about the information of use. You should implement toString in this class.
+	       provides no information about the information of use. You should implement toString in this class.</p>
 
-	   ]]></description>
+		]]></description>
   </rule>
 
   <rule key="SPP_TOSTRING_ON_STRING" priority="INFO">
@@ -1557,9 +1620,9 @@
     <configKey><![CDATA[SPP_TOSTRING_ON_STRING]]></configKey>
     <description><![CDATA[
 
-	       <p>This methods calls toString on a String. Just use the object itself if you want a String.</p>
+	       <p>This method calls toString on a String. Just use the object itself if you want a String.</p>
 
-	   ]]></description>
+		]]></description>
   </rule>
 
   <rule key="SPP_CONVERSION_OF_STRING_LITERAL" priority="INFO">
@@ -1567,7 +1630,7 @@
     <configKey><![CDATA[SPP_CONVERSION_OF_STRING_LITERAL]]></configKey>
     <description><![CDATA[
 
-	       <p>This methods calls a converting method like <code>toLowerCase()</code> or <code>trim</code>
+	       <p>This method calls a converting method like <code>toLowerCase()</code> or <code>trim</code>
 		   on a <code>String</code> literal. You should make the transformation yourself and use the transformed literal.</p>
 
 		   <p>
@@ -1582,7 +1645,7 @@
 		   for shorter and easier to read code.  An exception might be made when locale-specific transformations need to be done (in the case of <code>toUpperCase()</code> and <code>toLowerCase()</code>.
 		   </p>
 
-	   ]]></description>
+		]]></description>
   </rule>
 
   <rule key="SPP_EQUALS_ON_STRING_BUILDER" priority="INFO">
@@ -1593,7 +1656,7 @@
 			<p>This method calls equals on a StringBuilder or StringBuffer. Surprisingly, these classes do not override
 			the equals method from Object, and so equals is just defined to be == (or same references). This is most
 			likely not what you would like. If you wish to check that the strings have the same characters, you need to
-			call toString() on these object and compare them as Strings.
+			call toString() on these object and compare them as Strings.</p>
 
 		]]></description>
   </rule>
@@ -1615,7 +1678,7 @@
   </rule>
 
   <rule key="SCII_SPOILED_CHILD_INTERFACE_IMPLEMENTOR" priority="INFO">
-    <name><![CDATA[Style - Class implements interface by relying on unknowing superclass methods]]></name>
+    <name><![CDATA[Dodgy code - Class implements interface by relying on unknowing superclass methods]]></name>
     <configKey><![CDATA[SCII_SPOILED_CHILD_INTERFACE_IMPLEMENTOR]]></configKey>
     <description><![CDATA[
 
@@ -1654,7 +1717,7 @@
   </rule>
 
   <rule key="USS_USE_STRING_SPLIT" priority="INFO">
-    <name><![CDATA[Style - Method builds String array using String Tokenizing]]></name>
+    <name><![CDATA[Dodgy code - Method builds String array using String Tokenizing]]></name>
     <configKey><![CDATA[USS_USE_STRING_SPLIT]]></configKey>
     <description><![CDATA[
 
@@ -1663,12 +1726,12 @@
 			and easier to use the String.split method.</p>
 			<p>PLEASE NOTE: String.split will return an array of 1 element when passed the
 			empty string, as opposed to using StringTokenizer which returns false on the first
-			hasMoreElements/hasMoreTokens call. So you may need to use</p>
-			<pre>
-				if (s.length() > 0)
-					return s.split(";");
-				return new String[0];
-			</pre>
+			hasMoreElements/hasMoreTokens call. So you may need to use:</p>
+			<code>
+				if (s.length() > 0) <br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return s.split(";");<br/>
+				return new String[0];<br/>
+			</code>
 
 		]]></description>
   </rule>
@@ -1686,7 +1749,7 @@
   </rule>
 
   <rule key="UAA_USE_ADD_ALL" priority="INFO">
-    <name><![CDATA[Style - Method uses simple loop to copy contents of one collection to another]]></name>
+    <name><![CDATA[Dodgy code - Method uses simple loop to copy contents of one collection to another]]></name>
     <configKey><![CDATA[UAA_USE_ADD_ALL]]></configKey>
     <description><![CDATA[
 
@@ -1699,7 +1762,7 @@
   </rule>
 
   <rule key="MRC_METHOD_RETURNS_CONSTANT" priority="INFO">
-    <name><![CDATA[Style - Private method only returns one constant value]]></name>
+    <name><![CDATA[Dodgy code - Private method only returns one constant value]]></name>
     <configKey><![CDATA[MRC_METHOD_RETURNS_CONSTANT]]></configKey>
     <description><![CDATA[
 
@@ -1723,7 +1786,7 @@
   </rule>
 
   <rule key="MOM_MISLEADING_OVERLOAD_MODEL" priority="INFO">
-    <name><![CDATA[Style - Class 'overloads' a method with both instance and static versions]]></name>
+    <name><![CDATA[Dodgy code - Class 'overloads' a method with both instance and static versions]]></name>
     <configKey><![CDATA[MOM_MISLEADING_OVERLOAD_MODEL]]></configKey>
     <description><![CDATA[
 
@@ -1734,7 +1797,7 @@
   </rule>
 
   <rule key="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS" priority="INFO">
-    <name><![CDATA[Style - Unconstrained method converts checked exception to unchecked]]></name>
+    <name><![CDATA[Dodgy code - Unconstrained method converts checked exception to unchecked]]></name>
     <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS]]></configKey>
     <description><![CDATA[
 
@@ -1746,7 +1809,7 @@
   </rule>
 
   <rule key="EXS_EXCEPTION_SOFTENING_HAS_CHECKED" priority="INFO">
-    <name><![CDATA[Style - Constrained method converts checked exception to unchecked instead of another allowable checked exception]]></name>
+    <name><![CDATA[Dodgy code - Constrained method converts checked exception to unchecked instead of another allowable checked exception]]></name>
     <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_HAS_CHECKED]]></configKey>
     <description><![CDATA[
 
@@ -1759,7 +1822,7 @@
   </rule>
 
   <rule key="EXS_EXCEPTION_SOFTENING_NO_CHECKED" priority="INFO">
-    <name><![CDATA[Style - Constrained method converts checked exception to unchecked]]></name>
+    <name><![CDATA[Dodgy code - Constrained method converts checked exception to unchecked]]></name>
     <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_NO_CHECKED]]></configKey>
     <description><![CDATA[
 
@@ -1771,8 +1834,20 @@
 		]]></description>
   </rule>
 
+  <rule key="EXS_EXCEPTION_SOFTENING_RETURN_FALSE" priority="INFO">
+    <name><![CDATA[Dodgy code - method converts an exception into a boolean 'error code' value]]></name>
+    <configKey><![CDATA[EXS_EXCEPTION_SOFTENING_RETURN_FALSE]]></configKey>
+    <description><![CDATA[
+
+	       <p>This method catches and exception and returns a boolean that represents whether an exception occurred or not.
+	       This throws away the value of exception handling and lets code ignore the resultant 'error code' return value.
+	       You should just throw the exception to the caller instead.</p>
+
+		]]></description>
+  </rule>
+
   <rule key="CFS_CONFUSING_FUNCTION_SEMANTICS" priority="INFO">
-    <name><![CDATA[Style - Method returns modified parameter]]></name>
+    <name><![CDATA[Dodgy code - Method returns modified parameter]]></name>
     <configKey><![CDATA[CFS_CONFUSING_FUNCTION_SEMANTICS]]></configKey>
     <description><![CDATA[
 
@@ -1787,7 +1862,7 @@
   </rule>
 
   <rule key="JAO_JUNIT_ASSERTION_ODDITIES_ACTUAL_CONSTANT" priority="INFO">
-    <name><![CDATA[Style - Method passes constant to second (actual) assertion parameter]]></name>
+    <name><![CDATA[Dodgy code - Method passes constant to second (actual) assertion parameter]]></name>
     <configKey><![CDATA[JAO_JUNIT_ASSERTION_ODDITIES_ACTUAL_CONSTANT]]></configKey>
     <description><![CDATA[
 
@@ -1799,18 +1874,18 @@
   </rule>
 
   <rule key="JAO_JUNIT_ASSERTION_ODDITIES_INEXACT_DOUBLE" priority="INFO">
-    <name><![CDATA[Style - Method asserts that two doubles are exactly equal]]></name>
+    <name><![CDATA[Dodgy code - Method asserts that two doubles are exactly equal]]></name>
     <configKey><![CDATA[JAO_JUNIT_ASSERTION_ODDITIES_INEXACT_DOUBLE]]></configKey>
     <description><![CDATA[
 
-			<p>This method calls assert with two doubles or Doubles. Due to the inprecision of doubles, you
+			<p>This method calls assert with two doubles or Doubles. Due to the imprecision of doubles, you
 			should be using the assert method that takes a range parameter that gives a range of error.</p>
 
 		]]></description>
   </rule>
 
   <rule key="JAO_JUNIT_ASSERTION_ODDITIES_BOOLEAN_ASSERT" priority="INFO">
-    <name><![CDATA[Style - Method asserts that a value is true or false]]></name>
+    <name><![CDATA[Dodgy code - Method asserts that a value is true or false]]></name>
     <configKey><![CDATA[JAO_JUNIT_ASSERTION_ODDITIES_BOOLEAN_ASSERT]]></configKey>
     <description><![CDATA[
 
@@ -1869,7 +1944,7 @@
   </rule>
 
   <rule key="WEM_WEAK_EXCEPTION_MESSAGING" priority="INFO">
-    <name><![CDATA[Style - Method throws exception with static message string]]></name>
+    <name><![CDATA[Dodgy code - Method throws exception with static message string]]></name>
     <configKey><![CDATA[WEM_WEAK_EXCEPTION_MESSAGING]]></configKey>
     <description><![CDATA[
 
@@ -1931,7 +2006,7 @@
   </rule>
 
   <rule key="LO_STUTTERED_MESSAGE" priority="INFO">
-    <name><![CDATA[Style - Method stutters exception message in logger]]></name>
+    <name><![CDATA[Dodgy code - Method stutters exception message in logger]]></name>
     <configKey><![CDATA[LO_STUTTERED_MESSAGE]]></configKey>
     <description><![CDATA[
 
@@ -1951,7 +2026,7 @@
     <description><![CDATA[
 
 			<p>This method attempts to use an SLF4J logger to log a parameterized expression using formatting anchors.
-			However, SLF4j uses simple non numbered anchors such as {}, rather than anchors with digits in them as the
+			However, SLF4J uses simple non numbered anchors such as {}, rather than anchors with digits in them as the
 			code uses. Thus no parameter replacement will occur.</p>
 
 		]]></description>
@@ -1962,7 +2037,7 @@
     <configKey><![CDATA[LO_INCORRECT_NUMBER_OF_ANCHOR_PARAMETERS]]></configKey>
     <description><![CDATA[
 
-			<p>This method passes the wrong number of parameters to a SLF4j logging method (error, warn, info, debug) based on the number of anchors {} in the
+			<p>This method passes the wrong number of parameters to a SLF4J logging method (error, warn, info, debug) based on the number of anchors {} in the
 			format string. An additional exception argument is allowed if found.</p>
 
 		]]></description>
@@ -1973,24 +2048,24 @@
     <configKey><![CDATA[LO_EXCEPTION_WITH_LOGGER_PARMS]]></configKey>
     <description><![CDATA[
 
-	       <p>This method creates a standard exception passing a message string which contains an slf4j style
+	       <p>This method creates a standard exception passing a message string which contains an SLF4J style
 	       parameter marker '{}'. This marker will not be translated as it is not processed by the Exception class.
 	       </p>
 
-	   ]]></description>
+		]]></description>
   </rule>
 
   <rule key="LO_APPENDED_STRING_IN_FORMAT_STRING" priority="INFO">
-    <name><![CDATA[Performance - Method passes a concatenated string to Slf4j's format string]]></name>
+    <name><![CDATA[Performance - Method passes a concatenated string to SLF4J's format string]]></name>
     <configKey><![CDATA[LO_APPENDED_STRING_IN_FORMAT_STRING]]></configKey>
     <description><![CDATA[
 
-	       <p>This method uses an Slf4j logger to log a string, where the first (format) string is created using concatenation.
+	       <p>This method uses an SLF4J logger to log a string, where the first (format) string is created using concatenation.
 	       You should use {} markers to inject dynamic content into the string, so that String building is delayed until the
 	       actual log string is needed. If the log level is high enough that this log statement isn't used, then the appends
-	       will never be executed.
+	       will never be executed.</p>
 
-	   ]]></description>
+		]]></description>
   </rule>
 
   <rule key="IICU_INCORRECT_INTERNAL_CLASS_USE" priority="INFO">
@@ -2056,7 +2131,7 @@
   </rule>
 
   <rule key="DTEP_DEPRECATED_TYPESAFE_ENUM_PATTERN" priority="INFO">
-    <name><![CDATA[Style - Class appears to implement the old style type safe enum pattern]]></name>
+    <name><![CDATA[Dodgy code - Class appears to implement the old style type safe enum pattern]]></name>
     <configKey><![CDATA[DTEP_DEPRECATED_TYPESAFE_ENUM_PATTERN]]></configKey>
     <description><![CDATA[
 
@@ -2068,7 +2143,7 @@
   </rule>
 
   <rule key="SMA_STUTTERED_METHOD_ARGUMENTS" priority="INFO">
-    <name><![CDATA[Style - Code calls a method passing the same value to two different arguments]]></name>
+    <name><![CDATA[Dodgy code - Code calls a method passing the same value to two different arguments]]></name>
     <configKey><![CDATA[SMA_STUTTERED_METHOD_ARGUMENTS]]></configKey>
     <description><![CDATA[
 
@@ -2081,7 +2156,7 @@
   </rule>
 
   <rule key="TBP_TRISTATE_BOOLEAN_PATTERN" priority="INFO">
-    <name><![CDATA[Style - Method returns null for Boolean type]]></name>
+    <name><![CDATA[Dodgy code - Method returns null for Boolean type]]></name>
     <configKey><![CDATA[TBP_TRISTATE_BOOLEAN_PATTERN]]></configKey>
     <description><![CDATA[
 
@@ -2119,23 +2194,23 @@
   </rule>
 
   <rule key="IKNC_INCONSISTENT_HTTP_ATTRIBUTE_CASING" priority="INFO">
-    <name><![CDATA[Style - Method uses the same HttpSession attribute name but with different casing]]></name>
+    <name><![CDATA[Dodgy code - Method uses the same HttpSession attribute name but with different casing]]></name>
     <configKey><![CDATA[IKNC_INCONSISTENT_HTTP_ATTRIBUTE_CASING]]></configKey>
     <description><![CDATA[
 
 			<p>This method sets or gets an HttpSession attribute with a parameter name that was used in other locations
-			but with a different casing. As HttpSession attribute are case sensitive, this will be very confusing.</p>
+			but with a different casing. As HttpSession attribute are case-sensitive, this will be very confusing.</p>
 
 		]]></description>
   </rule>
 
   <rule key="IKNC_INCONSISTENT_HTTP_PARAM_CASING" priority="INFO">
-    <name><![CDATA[Style - Method uses the same HttpRequest parameter name but with different casing]]></name>
+    <name><![CDATA[Dodgy code - Method uses the same HttpRequest parameter name but with different casing]]></name>
     <configKey><![CDATA[IKNC_INCONSISTENT_HTTP_PARAM_CASING]]></configKey>
     <description><![CDATA[
 
 			<p>This method fetches an HttpServletRequest parameter with a parameter name that was used in other locations
-			but with a different casing. As HttpServletRequest parameters are case sensitive, this will be very confusing.</p>
+			but with a different casing. As HttpServletRequest parameters are case-sensitive, this will be very confusing.</p>
 
 		]]></description>
   </rule>
@@ -2208,7 +2283,7 @@
 			<code>
 				class A {}<br/>
 				class B extends A {}<br/>
-                                <br/>
+				<br/>
 				B[] b = new B[2];<br/>
 				A[] a = b;<br/>
 				a[0] = new A(); // results in ArrayStoreException (Runtime)<br/>
@@ -2309,7 +2384,13 @@
     <configKey><![CDATA[MDM_RANDOM_SEED]]></configKey>
     <description><![CDATA[
 
-			<p><code>Random()</code> constructor without a seed is insecure because it defaults to easily guessable seed: <code>System.currentTimeMillis()</code>. Initialize seed with <code>Random(SecureRandom.getInstance().generateSeed())</code> or use <code>SecureRandom</code> instead.</p>
+			<p><code>Random()</code> constructor without a seed is insecure because it defaults to easily guessable seed: <code>System.currentTimeMillis()</code>. Initialize seed like <code>new Random(SecureRandom.getInstance("SHA1PRNG").nextLong())</code> or replace <code>Random()</code> with <code>SecureRandom.getInstance("SHA1PRNG")</code> instead.
+			"SHA1PRNG" is the random algorithm supported on all platforms.
+		</p>
+
+			<p>
+				As of Java 6, you may use <code>new Random(new SecureRandom().nextLong())</code> or <code>new SecureRandom()</code> instead.
+			</p>
 
 		]]></description>
   </rule>
@@ -2325,7 +2406,7 @@
   </rule>
 
   <rule key="MDM_THREAD_PRIORITIES" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method uses suspicious thread priorities]]></name>
+    <name><![CDATA[Multithreaded correctness - Method uses suspicious thread priorities]]></name>
     <configKey><![CDATA[MDM_THREAD_PRIORITIES]]></configKey>
     <description><![CDATA[
 
@@ -2335,7 +2416,7 @@
   </rule>
 
   <rule key="MDM_THREAD_YIELD" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method attempts to manually schedule threads]]></name>
+    <name><![CDATA[Multithreaded correctness - Method attempts to manually schedule threads]]></name>
     <configKey><![CDATA[MDM_THREAD_YIELD]]></configKey>
     <description><![CDATA[
 
@@ -2345,7 +2426,7 @@
   </rule>
 
   <rule key="MDM_WAIT_WITHOUT_TIMEOUT" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method sleeps without timeout]]></name>
+    <name><![CDATA[Multithreaded correctness - Method sleeps without timeout]]></name>
     <configKey><![CDATA[MDM_WAIT_WITHOUT_TIMEOUT]]></configKey>
     <description><![CDATA[
 
@@ -2355,7 +2436,7 @@
   </rule>
 
   <rule key="MDM_THREAD_FAIRNESS" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method ignores Lock's fairness settings by calling tryLock()]]></name>
+    <name><![CDATA[Multithreaded correctness - Method ignores Lock's fairness settings by calling tryLock()]]></name>
     <configKey><![CDATA[MDM_THREAD_FAIRNESS]]></configKey>
     <description><![CDATA[
 
@@ -2365,7 +2446,7 @@
   </rule>
 
   <rule key="MDM_SIGNAL_NOT_SIGNALALL" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method calls Condition.signal() rather than Condition.signalAll()]]></name>
+    <name><![CDATA[Multithreaded correctness - Method calls Condition.signal() rather than Condition.signalAll()]]></name>
     <configKey><![CDATA[MDM_SIGNAL_NOT_SIGNALALL]]></configKey>
     <description><![CDATA[
 
@@ -2375,7 +2456,7 @@
   </rule>
 
   <rule key="MDM_LOCK_ISLOCKED" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method tests if a lock is locked]]></name>
+    <name><![CDATA[Multithreaded correctness - Method tests if a lock is locked]]></name>
     <configKey><![CDATA[MDM_LOCK_ISLOCKED]]></configKey>
     <description><![CDATA[
 
@@ -2389,13 +2470,17 @@
     <configKey><![CDATA[MDM_STRING_BYTES_ENCODING]]></configKey>
     <description><![CDATA[
 
-			<p>The behavior of the <code>String(byte[] bytes)</code> and <code>String.getBytes()</code> is undefined if the string cannot be encoded in the platform's default charset. Instead, use the <code>String(byte[] bytes, String encoding)</code> or <code>String.getBytes(String encoding)></code> constructor which accepts the string's encoding as an argument. Be sure to specify the encoding used for the user's locale.</p>
+			<p>The behavior of the <code>String(byte[] bytes)</code> and <code>String.getBytes()</code> is undefined if the string cannot be encoded in the platform's default charset. Instead, use the <code>String(byte[] bytes, String encoding)</code> or <code>String.getBytes(String encoding)</code> constructor which accepts the string's encoding as an argument. Be sure to specify the encoding used for the user's locale.</p>
+
+			<p>As per the Java specifications, "UTF-8", "US-ASCII", "UTF-16" and "ISO-8859-1" will all be valid <a href = "http://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html#standard">encoding charsets</a>.  If you aren't sure, try "UTF-8".</p>
+
+			<p><b>New in Java 1.7</b>, You can specify an encoding from <code>StandardCharsets</code>, like <code>StandardCharsets.UTF_8</code>.  These are generally preferrable because you don't have to deal with <code>UnsupportedEncodingException</code>.</p>
 
 		]]></description>
   </rule>
 
   <rule key="MDM_SETDEFAULTLOCALE" priority="INFO">
-    <name><![CDATA[Mt_correctness - Method calls Locale.setDefault()]]></name>
+    <name><![CDATA[Multithreaded correctness - Method calls Locale.setDefault()]]></name>
     <configKey><![CDATA[MDM_SETDEFAULTLOCALE]]></configKey>
     <description><![CDATA[
 
@@ -2481,7 +2566,7 @@
   </rule>
 
   <rule key="UVA_USE_VAR_ARGS" priority="INFO">
-    <name><![CDATA[Style - Method defines parameter list with array as last argument, rather than vararg]]></name>
+    <name><![CDATA[Dodgy code - Method defines parameter list with array as last argument, rather than vararg]]></name>
     <configKey><![CDATA[UVA_USE_VAR_ARGS]]></configKey>
     <description><![CDATA[
 
@@ -2507,7 +2592,7 @@
   </rule>
 
   <rule key="SEC_SIDE_EFFECT_CONSTRUCTOR" priority="INFO">
-    <name><![CDATA[Style - Method uses a Side Effect Constructor]]></name>
+    <name><![CDATA[Dodgy code - Method uses a Side Effect Constructor]]></name>
     <configKey><![CDATA[SEC_SIDE_EFFECT_CONSTRUCTOR]]></configKey>
     <description><![CDATA[
 
@@ -2543,7 +2628,7 @@
   </rule>
 
   <rule key="STB_STACKED_TRY_BLOCKS" priority="INFO">
-    <name><![CDATA[Style - Method stacks similar try/catch blocks]]></name>
+    <name><![CDATA[Dodgy code - Method stacks similar try/catch blocks]]></name>
     <configKey><![CDATA[STB_STACKED_TRY_BLOCKS]]></configKey>
     <description><![CDATA[
 
@@ -2615,7 +2700,7 @@
   </rule>
 
   <rule key="CU_CLONE_USABILITY_OBJECT_RETURN" priority="INFO">
-    <name><![CDATA[Style - Clone method declares it returns an Object]]></name>
+    <name><![CDATA[Dodgy code - Clone method declares it returns an Object]]></name>
     <configKey><![CDATA[CU_CLONE_USABILITY_OBJECT_RETURN]]></configKey>
     <description><![CDATA[
 
@@ -2627,7 +2712,7 @@
   </rule>
 
   <rule key="CU_CLONE_USABILITY_MISMATCHED_RETURN" priority="INFO">
-    <name><![CDATA[Style - Clone method declares it returns a type different then the owning class]]></name>
+    <name><![CDATA[Dodgy code - Clone method declares it returns a type different then the owning class]]></name>
     <configKey><![CDATA[CU_CLONE_USABILITY_MISMATCHED_RETURN]]></configKey>
     <description><![CDATA[
 
@@ -2638,7 +2723,7 @@
   </rule>
 
   <rule key="CU_CLONE_USABILITY_THROWS" priority="INFO">
-    <name><![CDATA[Style - Clone method declares it throws CloneNotSupportedException]]></name>
+    <name><![CDATA[Dodgy code - Clone method declares it throws CloneNotSupportedException]]></name>
     <configKey><![CDATA[CU_CLONE_USABILITY_THROWS]]></configKey>
     <description><![CDATA[
 
@@ -2670,8 +2755,17 @@
     <description><![CDATA[
 
 			<p>This method allocates a collection using the default constructor even though it is known
-			apriori how many items are going to be placed in the collection (or at least a reasonable guess)
+			a priori how many items are going to be placed in the collection (or at least a reasonable guess)
 			and thus needlessly causes intermediate reallocations of the collection.</p>
+			<p>You can use the constructor that takes an initial size and that will be much better, but
+			due to the loadFactor of Maps and Sets, even this will not be a correct estimate.</p>
+			<p>If you are using guava, use its methods that allocate maps and sets with a predetermined size,
+			to get the best chance for no reallocations, such as:
+			<ul>
+			    <li>Sets.newHashSetWithExpectedSize(int)</li>
+			    <li>Maps.newHashMapWithExpectedSize(int)</li>
+			</ul>
+			</p>
 
 		]]></description>
   </rule>
@@ -2733,7 +2827,7 @@
   </rule>
 
   <rule key="CNC_COLLECTION_NAMING_CONFUSION" priority="INFO">
-    <name><![CDATA[Style - Collection variable is named with a different type of collection in the name]]></name>
+    <name><![CDATA[Dodgy code - Collection variable is named with a different type of collection in the name]]></name>
     <configKey><![CDATA[CNC_COLLECTION_NAMING_CONFUSION]]></configKey>
     <description><![CDATA[
 
@@ -2741,11 +2835,11 @@
             of collection in its name. An example would be a Set<User> called userList. This is confusing to the reader,
             and likely caused by a previous refactor of type, without changing the name.</p>
 
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="PME_POOR_MANS_ENUM" priority="INFO">
-    <name><![CDATA[Style - Simple field is used like an enum]]></name>
+    <name><![CDATA[Dodgy code - Simple field is used like an enum]]></name>
     <configKey><![CDATA[PME_POOR_MANS_ENUM]]></configKey>
     <description><![CDATA[
 
@@ -2753,34 +2847,20 @@
 	       assigned to it. Thus it appears to be used like an enum value, and should probably be defined as such.
 	       </p>
 
-	   ]]></description>
+		]]></description>
   </rule>
 
   <rule key="UP_UNUSED_PARAMETER" priority="INFO">
-    <name><![CDATA[Style - Static or private method has unused parameters]]></name>
+    <name><![CDATA[Dodgy code - Static or private method has unused parameters]]></name>
     <configKey><![CDATA[UP_UNUSED_PARAMETER]]></configKey>
     <description><![CDATA[
 
 	       <p>This method defines parameters that are never used. As this method is either static of private,
 	       and can't be derived from, it is safe to remove these parameters and simplify your method.
 	       You should consider, while unlikely, that this method may be used reflectively, and thus you will
-	       want to change that call as well.
+	       want to change that call as well.</p>
 
-	   ]]></description>
-  </rule>
-
-  <rule key="CD_CIRCULAR_DEPENDENCY" priority="INFO">
-    <name><![CDATA[Correctness - Test for circular dependencies among classes]]></name>
-    <configKey><![CDATA[CD_CIRCULAR_DEPENDENCY]]></configKey>
-    <description><![CDATA[
-
-		    <p>
-		    This class has a circular dependency with other classes. This makes building these classes
-		    difficult, as each is dependent on the other to build correctly. Consider using interfaces
-		    to break the hard dependency.
-		    </p>
-
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="MUC_MODIFYING_UNMODIFIABLE_COLLECTION" priority="INFO">
@@ -2790,9 +2870,9 @@
 
             <p>This method attempts to modify a collection that it got from a source that could potentially have created an
             immutable collection, thru Arrays.asList, Collections.unmodifiableXXX, or one of guava's methods. Doing so will cause
-            an exception, as these collections are not mutable.
+            an exception, as these collections are not mutable.</p>
 
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="HES_EXECUTOR_NEVER_SHUTDOWN" priority="INFO">
@@ -2813,7 +2893,7 @@
 			provided, or for <code>ThreadPoolExecutor</code>s with <code>allowsCoreThreadTimeOut()</code> set to true,
 			it is good practice to explicitly shutdown the <code>ExecutorService</code> when its utility is done.</p>
 
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="HES_LOCAL_EXECUTOR_SERVICE" priority="INFO">
@@ -2827,7 +2907,7 @@
 
 			<p>Consider making this local variable a field and create a method that will explicitly shutdown the <code>ExecutorService</code></p>
 
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="HES_EXECUTOR_OVERWRITTEN_WITHOUT_SHUTDOWN" priority="INFO">
@@ -2866,11 +2946,11 @@
 			it is good practice to explicitly shutdown the <code>ExecutorService</code> at the end of execution, or
 			when it is being replaced.</p>
 
-			<p><b>Note:</b> <code>ExecutorService</code>s are generally created once in a program's lifecycle.  If you find yourself
+			<p><b>Note:</b> <code>ExecutorService</code>s are generally created once in a program's life cycle.  If you find yourself
 			replacing the <code>ExecutorService</code>, perhaps you may consider restructuring your code to use calls like
 			<code>awaitTermination()</code> or <code>Future</code>s/<code>Callable</code>s to avoid recreating the <code>ExecutorService</code>.</p>
 
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="HCP_HTTP_REQUEST_RESOURCES_NOT_FREED_FIELD" priority="INFO">
@@ -2882,17 +2962,17 @@
 				that didn't release its associated resources.  Code like the following: <br/>
 				<code>
 				private HttpGet httpGet; <br/>
-				...</br>
-				public String requestInfo(URI u) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;this.httpGet = new HttpGet(u);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) ( </br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;return null;</br>
-				}</br>
+				...<br/>
+				public String requestInfo(URI u) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;this.httpGet = new HttpGet(u);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return null;<br/>
+				}<br/>
 				</code>
 				will freeze after a few requests, usually with no indication as to why.  </p>
 
@@ -2901,24 +2981,24 @@
 				with a call to either <code>reset()</code> or <code>releaseConnection()</code>.  The above example can be easily fixed:<br/>
 				<code>
 				private HttpGet httpGet; <br/>
-				...</br>
-				public String requestInfo(URI u) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;this.httpGet = new HttpGet(u);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) ( </br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;<b>finally {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.httpGet.reset();</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</b></br>
-				&nbsp;&nbsp;&nbsp;&nbsp;return null;</br>
-				}</br>
+				...<br/>
+				public String requestInfo(URI u) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;this.httpGet = new HttpGet(u);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;<b>finally {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.httpGet.reset();<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return null;<br/>
+				}<br/>
 				</code>
 			</p>
 
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="HCP_HTTP_REQUEST_RESOURCES_NOT_FREED_LOCAL" priority="INFO">
@@ -2929,16 +3009,16 @@
             <p>FindBugs has detected an <code>org.apache.http.HttpRequest</code> (e.g. <code>HttpGet</code>, <code>HttpPost</code>, etc)
 				that didn't release its associated resources.  Code like the following: <br/>
 				<code>
-				public String requestInfo(URI u) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;HttpGet httpGet = new HttpGet(u);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) ( </br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;return null;</br>
-				}</br>
+				public String requestInfo(URI u) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;HttpGet httpGet = new HttpGet(u);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return null;<br/>
+				}<br/>
 				</code>
 				will freeze after a few requests, usually with no indication as to why. </p>
 
@@ -2949,23 +3029,23 @@
 
 				<br/>The above example can be easily fixed:<br/>
 				<code>
-				public String requestInfo(URI u) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;HttpGet httpGet = new HttpGet(u);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) ( </br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;<b>finally {</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpGet.reset();</br>
-				&nbsp;&nbsp;&nbsp;&nbsp;}</b></br>
-				&nbsp;&nbsp;&nbsp;&nbsp;return null;</br>
-				}</br>
+				public String requestInfo(URI u) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;HttpGet httpGet = new HttpGet(u);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;try(CloseableHttpResponse response = client.execute(httpGet);) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return getResponseAsString(response);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;catch (IOException e) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;<b>finally {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpGet.reset();<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return null;<br/>
+				}<br/>
 				</code>
 			</p>
 
-        ]]></description>
+		]]></description>
   </rule>
 
   <rule key="UJM_UNJITABLE_METHOD" priority="INFO">
@@ -2975,9 +3055,9 @@
 
     		<p>This method is longer than 8000 bytes. By default the JIT will not attempt to compile this method no matter
     		how hot it is, and so this method will always be interpreted. If performance is important, you should consider
-    		breaking this method up in smaller chunks. (And probably a good idea for readability too!).
+    		breaking this method up in smaller chunks. (And probably a good idea for readability too!).</p>
 
-    	]]></description>
+		]]></description>
   </rule>
 
   <rule key="CTU_CONFLICTING_TIME_UNITS" priority="INFO">
@@ -2988,9 +3068,116 @@
     		<p>This method takes two values that appear to be representing time, and performs arithmetic operations on this
     		two values directly, even though it appears that the two values are representing different time units, such as
     		adding a millisecond value to a nanosecond value. You should convert the two values to the same time unit before
-    		performing this calculation in order for it to be meaningful.
+    		performing this calculation in order for it to be meaningful.</p>
 
-    	]]></description>
+		]]></description>
+  </rule>
+
+  <rule key="CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET" priority="INFO">
+    <name><![CDATA[Correctness - This method needlessly uses a String literal as a Charset encoding]]></name>
+    <configKey><![CDATA[CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET]]></configKey>
+    <description><![CDATA[
+
+    		<p>This method uses a string literal to specify a <code>Charset</code> encoding. However the method invoked has an
+    		alternative signature that takes a <code>Charset</code> object. You should use this signature, as this class is compiled
+    		with JDK 7 (or better), and the <code>Charset</code> in question is available as a constant from the
+    		<code>java.nio.charset.StandardCharsets</code> class.</p>
+    		<p>So instead of specifying "UTF-8", use <code>StandardCharsets.UTF_8</code>, for instance. An added benefit of this is
+    		that you will not need to catch <code>UnsupportedEncodingException</code>.</p>
+
+		]]></description>
+  </rule>
+
+  <rule key="CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET_NAME" priority="INFO">
+    <name><![CDATA[Correctness - This method should use a StandardCharsets.XXX.name() to specify an encoding]]></name>
+    <configKey><![CDATA[CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET_NAME]]></configKey>
+    <description><![CDATA[
+
+    		<p>This method uses a hand-typed <code>String</code> literal to specify a <code>Charset</code> encoding. As this class is compiled
+    		with JDK 7 (or better), and the charset in question is available as a constant from the
+    		<code>java.nio.charset.StandardCharsets</code> class, it is better to use the .name() method of the appropriate
+    		<code>StandardCharsets</code> constant.</p>
+
+			<p>The method in question doesn't directly support a <code>Charset</code> as a parameter, only a <code>String</code>.
+				Still, instead of specifying something like "UTF-8" (and potentially mistyping it), use <code>StandardCharsets.UTF_8.name()</code>.
+			</p>
+
+		]]></description>
+  </rule>
+
+  <rule key="CSI_CHAR_SET_ISSUES_UNKNOWN_ENCODING" priority="INFO">
+    <name><![CDATA[Correctness - This method uses an unknown character encoding literal]]></name>
+    <configKey><![CDATA[CSI_CHAR_SET_ISSUES_UNKNOWN_ENCODING]]></configKey>
+    <description><![CDATA[
+
+    		<p>This method specifies a <code>Charset</code> encoding with a String literal that is not recognized by the current
+    		JDK. It's possible that this application will only be deployed on a JVM that does recognize this encoding, but
+    		it seem dubious that this is the case.</p>
+    		<p>
+    		The standard JDK encodings are "UTF-8", "US-ASCII", "ISO-8859-1", "UTF-16BE", "UTF-16LE", "UTF-16".  These are all case-sensitive.
+    		</p>
+
+		]]></description>
+  </rule>
+
+  <rule key="CBC_CONTAINS_BASED_CONDITIONAL" priority="INFO">
+    <name><![CDATA[Dodgy code - This method uses an excessively complex conditional that can be replaced with Set.contains]]></name>
+    <configKey><![CDATA[CBC_CONTAINS_BASED_CONDITIONAL]]></configKey>
+    <description><![CDATA[
+
+    		<p>This method uses an overly complex if expression made up of multiple conditions joined by OR, where the same
+    		local variable is compared to a static value. When the number of conditions grow it is much cleaner
+    		to build a static set of the possible values, and use the contains method on that set. This will
+    		shorten the code, and make it more self documenting.</p>
+
+		]]></description>
+  </rule>
+
+  <rule key="OPM_OVERLY_PERMISSIVE_METHOD" priority="INFO">
+    <name><![CDATA[Dodgy code - This method is declared more permissively than is used in the code base]]></name>
+    <configKey><![CDATA[OPM_OVERLY_PERMISSIVE_METHOD]]></configKey>
+    <description><![CDATA[
+
+    		<p>This method is declared more permissively than the code is using. Having this method be more
+			permissive than is needed limits your ability to make observations about this method, like
+    		parameter usage, refactorability, and derivability. It is possible that this detector will report
+    		erroneously if:
+    		<ul>
+    			<li>The method is called from code not being scanned, such as unit tests</li>
+				<li>The method is an API method, expected to be used by unknown client code</li>
+    			<li>The method is called through reflection
+    		</ul>
+    		</p>
+
+		]]></description>
+  </rule>
+
+  <rule key="CIS_TOSTRING_STORED_IN_FIELD" priority="INFO">
+    <name><![CDATA[Dodgy code - This method stores the value of a toString() call into a field]]></name>
+    <configKey><![CDATA[CIS_TOSTRING_STORED_IN_FIELD]]></configKey>
+    <description><![CDATA[
+
+            <p>This method calls the toString() method on an object and stores the value in a field. Doing this
+            throws away the type safety of having the object defined by a Class. Using String makes it very easy to
+            use the wrong type of value, and the compiler will not catch these mistakes. You should delay converting
+            values to Strings for as long as possible, and thus not store them as fields.
+            </p>
+
+		]]></description>
+  </rule>
+
+  <rule key="CIS_STRING_PARSING_A_FIELD" priority="INFO">
+    <name><![CDATA[Dodgy code - This method parses a String that is a field]]></name>
+    <configKey><![CDATA[CIS_STRING_PARSING_A_FIELD]]></configKey>
+    <description><![CDATA[
+
+            <p>This method calls a parsing method (indexOf, lastIndexOf, startsWith, endsWith, substring, indexOf) on a String
+            that is a field, or comes from a collection that is a field. This implies that the String in question is holding
+            multiple parts of information inside the string, which would be more maintainable and type safe if that value was a
+            true collection or a first class object with fields, rather than a String.
+            </p>
+
+		]]></description>
   </rule>
 
 </rules>
