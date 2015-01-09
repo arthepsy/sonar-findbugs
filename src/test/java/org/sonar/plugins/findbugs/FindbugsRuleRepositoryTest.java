@@ -42,7 +42,7 @@ public class FindbugsRuleRepositoryTest {
   public void testLoadRepositoryFromXml() {
     List<Rule> rules = repository.createRules();
 
-    assertThat(rules.size()).isEqualTo(421);
+    assertThat(rules.size()).isEqualTo(434);
     for (Rule rule : rules) {
       assertThat(rule.getKey()).isNotNull();
       assertThat(rule.getConfigKey()).isNotNull();

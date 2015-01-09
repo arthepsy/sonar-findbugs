@@ -2571,4 +2571,82 @@
     <configKey><![CDATA[CNT_ROUGH_CONSTANT_VALUE]]></configKey>
   </rule>
 
+  <rule key="NOISE_NULL_DEREFERENCE">
+    <priority>INFO</priority>
+    <name><![CDATA[Noise - Bogus warning about a null pointer dereference]]></name>
+    <configKey><![CDATA[NOISE_NULL_DEREFERENCE]]></configKey>
+  </rule>
+
+  <rule key="NOISE_METHOD_CALL">
+    <priority>INFO</priority>
+    <name><![CDATA[Noise - Bogus warning about a method call]]></name>
+    <configKey><![CDATA[NOISE_METHOD_CALL]]></configKey>
+  </rule>
+
+  <rule key="NOISE_FIELD_REFERENCE">
+    <priority>INFO</priority>
+    <name><![CDATA[Noise - Bogus warning about a field reference]]></name>
+    <configKey><![CDATA[NOISE_FIELD_REFERENCE]]></configKey>
+  </rule>
+
+  <rule key="NOISE_OPERATION">
+    <priority>INFO</priority>
+    <name><![CDATA[Noise - Bogus warning about an operation]]></name>
+    <configKey><![CDATA[NOISE_OPERATION]]></configKey>
+  </rule>
+
+  <rule key="DMI_VACUOUS_CALL_TO_EASYMOCK_METHOD">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Useless/vacuous call to EasyMock method]]></name>
+    <configKey><![CDATA[DMI_VACUOUS_CALL_TO_EASYMOCK_METHOD]]></configKey>
+  </rule>
+
+  <rule key="TLW_TWO_LOCK_NOTIFY">
+    <priority>INFO</priority>
+    <name><![CDATA[Multithreaded correctness - Notify with two locks held]]></name>
+    <configKey><![CDATA[TLW_TWO_LOCK_NOTIFY]]></configKey>
+  </rule>
+
+  <rule key="LI_LAZY_INIT_INSTANCE">
+    <priority>INFO</priority>
+    <name><![CDATA[Multithreaded correctness - Incorrect lazy initialization of instance field]]></name>
+    <configKey><![CDATA[LI_LAZY_INIT_INSTANCE]]></configKey>
+  </rule>
+
+  <rule key="JLM_JSR166_UTILCONCURRENT_MONITORENTER">
+    <priority>INFO</priority>
+    <name><![CDATA[Multithreaded correctness - Synchronization performed on util.concurrent instance]]></name>
+    <configKey><![CDATA[JLM_JSR166_UTILCONCURRENT_MONITORENTER]]></configKey>
+  </rule>
+
+  <rule key="BRSA_BAD_RESULTSET_ACCESS">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Method attempts to access a result set field with index 0]]></name>
+    <configKey><![CDATA[BRSA_BAD_RESULTSET_ACCESS]]></configKey>
+  </rule>
+
+  <rule key="BC_IMPOSSIBLE_CAST_PRIMITIVE_ARRAY">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Impossible cast involving primitive array]]></name>
+    <configKey><![CDATA[BC_IMPOSSIBLE_CAST_PRIMITIVE_ARRAY]]></configKey>
+  </rule>
+
+  <rule key="BC_NULL_INSTANCEOF">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - A known null value is checked to see if it is an instance of a type]]></name>
+    <configKey><![CDATA[BC_NULL_INSTANCEOF]]></configKey>
+  </rule>
+
+  <rule key="VR_UNRESOLVABLE_REFERENCE">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Class makes reference to unresolvable class or method]]></name>
+    <configKey><![CDATA[VR_UNRESOLVABLE_REFERENCE]]></configKey>
+  </rule>
+
+  <rule key="NP_METHOD_PARAMETER_RELAXING_ANNOTATION">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Method tightens nullness annotation on parameter]]></name>
+    <configKey><![CDATA[NP_METHOD_PARAMETER_RELAXING_ANNOTATION]]></configKey>
+  </rule>
+
 </rules>
