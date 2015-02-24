@@ -1,8 +1,10 @@
 <rules>
   <!-- findsecbugs -->
-  <rule key="PREDICTABLE_RANDOM" priority="INFO">
+  <rule key="PREDICTABLE_RANDOM" priority="MAJOR">
     <name><![CDATA[Security - Predictable Pseudo Random Number Generator]]></name>
     <configKey><![CDATA[PREDICTABLE_RANDOM]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The use of a predictable random value can lead to vulnerabilities when used in certain security critical contexts. For example, when the value is used as:</p>
@@ -29,6 +31,8 @@ A quick fix could be to replace the use of <b>java.util.Random</b> with somethin
   <rule key="SERVLET_PARAMETER" priority="INFO">
     <name><![CDATA[Security - Untrusted Servlet Parameter]]></name>
     <configKey><![CDATA[SERVLET_PARAMETER]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The Servlet can read GET and POST parameters from various methods. The value obtained should be considered unsafe.
@@ -53,6 +57,8 @@ You may need to validate or sanitize those values before passing them to sensiti
   <rule key="SERVLET_CONTENT_TYPE" priority="INFO">
     <name><![CDATA[Security - Untrusted Content-Type Header]]></name>
     <configKey><![CDATA[SERVLET_CONTENT_TYPE]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -70,6 +76,8 @@ The HTTP header Content-Type can be controlled by the client. As such, its value
   <rule key="SERVLET_SERVER_NAME" priority="INFO">
     <name><![CDATA[Security - Untrusted Hostname Header]]></name>
     <configKey><![CDATA[SERVLET_SERVER_NAME]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The hostname header can be controlled by the client. As such, its value should not be used in any security critical decisions.
@@ -96,6 +104,7 @@ decisions you make with respect to a request.
   <rule key="SERVLET_SESSION_ID" priority="INFO">
     <name><![CDATA[Security - Untrusted Session Cookie Value]]></name>
     <configKey><![CDATA[SERVLET_SESSION_ID]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -128,6 +137,8 @@ valid active session IDs, allowing an insider to hijack any sessions whose IDs h
   <rule key="SERVLET_QUERY_STRING" priority="INFO">
     <name><![CDATA[Security - Untrusted Query String]]></name>
     <configKey><![CDATA[SERVLET_QUERY_STRING]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The query string is the concatenation of the GET parameter names and values. Parameters other than those intended can
@@ -149,6 +160,8 @@ You may need to validate or sanitize anything pulled from the query string befor
   <rule key="SERVLET_HEADER" priority="INFO">
     <name><![CDATA[Security - HTTP Headers Untrusted]]></name>
     <configKey><![CDATA[SERVLET_HEADER]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>Request headers can easily be altered by the requesting user. In general, no assumption should be made that
@@ -166,6 +179,8 @@ not trust this value in any security decisions you make with respect to a reques
   <rule key="SERVLET_HEADER_REFERER" priority="INFO">
     <name><![CDATA[Security - Untrusted Referer Header]]></name>
     <configKey><![CDATA[SERVLET_HEADER_REFERER]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -194,6 +209,8 @@ Recommendations:
   <rule key="SERVLET_HEADER_USER_AGENT" priority="INFO">
     <name><![CDATA[Security - Untrusted User-Agent Header]]></name>
     <configKey><![CDATA[SERVLET_HEADER_USER_AGENT]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The header "User-Agent" can easily be spoofed by the client. Adopting different behaviors based on the User-Agent (for
@@ -210,6 +227,8 @@ crawler UA) is not recommended.</p>
   <rule key="COOKIE_USAGE" priority="INFO">
     <name><![CDATA[Security - Potentially Sensitive Data in Cookie]]></name>
     <configKey><![CDATA[COOKIE_USAGE]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The information stored in a custom cookie should not be sensitive or related to the session. In most cases, sensitive data should only be stored in session
@@ -224,9 +243,12 @@ and referenced by the user's session cookie. See HttpSession (HttpServletRequest
 		]]></description>
   </rule>
 
-  <rule key="PATH_TRAVERSAL_IN" priority="INFO">
+  <rule key="PATH_TRAVERSAL_IN" priority="MAJOR">
     <name><![CDATA[Security - Potential Path Traversal (File Read)]]></name>
     <configKey><![CDATA[PATH_TRAVERSAL_IN]]></configKey>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>A file is opened to read its content. The filename comes from an <b>input</b> parameter.
@@ -245,9 +267,12 @@ by the user. If that is the case, the reported instance is a false positive.</p>
 		]]></description>
   </rule>
 
-  <rule key="PATH_TRAVERSAL_OUT" priority="INFO">
+  <rule key="PATH_TRAVERSAL_OUT" priority="MAJOR">
     <name><![CDATA[Security - Potential Path Traversal (File Write)]]></name>
     <configKey><![CDATA[PATH_TRAVERSAL_OUT]]></configKey>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>A file is opened to write to its contents. The filename comes from an <b>input</b> parameter.
@@ -266,9 +291,13 @@ by the user. If that is the case, the reported instance is a false positive.</p>
 		]]></description>
   </rule>
 
-  <rule key="COMMAND_INJECTION" priority="INFO">
+  <rule key="COMMAND_INJECTION" priority="CRITICAL">
     <name><![CDATA[Security - Potential Command Injection]]></name>
     <configKey><![CDATA[COMMAND_INJECTION]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>cwe</tag>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The highlighted API is used to execute a system command. If unfiltered input is passed to this API, it can lead to arbitrary command execution.</p>
@@ -286,6 +315,9 @@ by the user. If that is the case, the reported instance is a false positive.</p>
   <rule key="WEAK_FILENAMEUTILS" priority="INFO">
     <name><![CDATA[Security - FilenameUtils Not Filtering Null Bytes]]></name>
     <configKey><![CDATA[WEAK_FILENAMEUTILS]]></configKey>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>Some FilenameUtils' methods don't filter NULL bytes (<code>0x00</code>).</p>
@@ -311,9 +343,13 @@ that looks at the end of the filename (e.g., endswith ".log") to make sure its a
 		]]></description>
   </rule>
 
-  <rule key="WEAK_TRUST_MANAGER" priority="INFO">
+  <rule key="WEAK_TRUST_MANAGER" priority="MAJOR">
     <name><![CDATA[Security - TrustManager Implementation Empty]]></name>
     <configKey><![CDATA[WEAK_TRUST_MANAGER]]></configKey>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>Empty TrustManager implementations are often used to connect easily to a host that is not signed by a root
@@ -340,6 +376,7 @@ Detailed information for a proper implementation is at:
   <rule key="JAXWS_ENDPOINT" priority="INFO">
     <name><![CDATA[Security - Found JAX-WS SOAP Endpoint]]></name>
     <configKey><![CDATA[JAXWS_ENDPOINT]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>This method is part of a SOAP Web Service (JSR224).</p>
@@ -364,6 +401,7 @@ Detailed information for a proper implementation is at:
   <rule key="JAXRS_ENDPOINT" priority="INFO">
     <name><![CDATA[Security - Found JAX-RS REST Endpoint]]></name>
     <configKey><![CDATA[JAXRS_ENDPOINT]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>This method is part of a REST Web Service (JSR311).</p>
@@ -393,6 +431,7 @@ Detailed information for a proper implementation is at:
   <rule key="TAPESTRY_ENDPOINT" priority="INFO">
     <name><![CDATA[Security - Found Tapestry Page]]></name>
     <configKey><![CDATA[TAPESTRY_ENDPOINT]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>A Tapestry endpoint was discovered at application startup. Tapestry apps are structured with a backing Java class and a corresponding
@@ -429,6 +468,7 @@ mapped in this way are properly validated before they are used.</p>
   <rule key="WICKET_ENDPOINT" priority="INFO">
     <name><![CDATA[Security - Found Wicket Page]]></name>
     <configKey><![CDATA[WICKET_ENDPOINT]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>This class represents a Wicket WebPage. Input is automatically read from a PageParameters instance passed to the constructor.
@@ -444,9 +484,12 @@ mapped in this way are properly validated before they are used.</p>
 		]]></description>
   </rule>
 
-  <rule key="WEAK_MESSAGE_DIGEST" priority="INFO">
+  <rule key="WEAK_MESSAGE_DIGEST" priority="MAJOR">
     <name><![CDATA[Security - MessageDigest Is Weak]]></name>
     <configKey><![CDATA[WEAK_MESSAGE_DIGEST]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The algorithm used is not a recommended MessageDigest.</p>
@@ -463,9 +506,12 @@ mapped in this way are properly validated before they are used.</p>
 		]]></description>
   </rule>
 
-  <rule key="CUSTOM_MESSAGE_DIGEST" priority="INFO">
+  <rule key="CUSTOM_MESSAGE_DIGEST" priority="MAJOR">
     <name><![CDATA[Security - MessageDigest Is Custom]]></name>
     <configKey><![CDATA[CUSTOM_MESSAGE_DIGEST]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>Implementing a custom MessageDigest is error-prone.</p>
@@ -502,6 +548,8 @@ sha256Digest.update(password.getBytes());</pre>
   <rule key="FILE_UPLOAD_FILENAME" priority="INFO">
     <name><![CDATA[Security - Tainted Filename Read]]></name>
     <configKey><![CDATA[FILE_UPLOAD_FILENAME]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The filename provided by the FileUpload API can be tampered with by the client to reference unauthorized files.</p>
@@ -523,9 +571,11 @@ contains no unauthorized path characters (e.g., / \), and refers to an authorize
 		]]></description>
   </rule>
 
-  <rule key="REDOS" priority="INFO">
+  <rule key="REDOS" priority="MAJOR">
     <name><![CDATA[Security - Regex DOS (ReDOS)]]></name>
     <configKey><![CDATA[REDOS]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -553,9 +603,11 @@ regex meant, this new regex can be evaluated quickly, and is not subject to ReDO
 		]]></description>
   </rule>
 
-  <rule key="XXE_SAXPARSER" priority="INFO">
+  <rule key="XXE_SAXPARSER" priority="CRITICAL">
     <name><![CDATA[Security - XML Parsing Vulnerable to XXE (SAXParser)]]></name>
     <configKey><![CDATA[XXE_SAXPARSER]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <!--XXE_GENERIC_START-->
@@ -636,9 +688,11 @@ parser.parse(inputStream, customHandler);</pre>
 		]]></description>
   </rule>
 
-  <rule key="XXE_XMLREADER" priority="INFO">
+  <rule key="XXE_XMLREADER" priority="CRITICAL">
     <name><![CDATA[Security - XML Parsing Vulnerable to XXE (XMLReader)]]></name>
     <configKey><![CDATA[XXE_XMLREADER]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <!--XXE_GENERIC_START-->
@@ -719,9 +773,11 @@ reader.parse(new InputSource(inputStream));</pre>
 		]]></description>
   </rule>
 
-  <rule key="XXE_DOCUMENT" priority="INFO">
+  <rule key="XXE_DOCUMENT" priority="CRITICAL">
     <name><![CDATA[Security - XML Parsing Vulnerable to XXE (DocumentBuilder)]]></name>
     <configKey><![CDATA[XXE_DOCUMENT]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <!--XXE_GENERIC_START-->
@@ -802,9 +858,14 @@ Document doc = db.parse(input);</pre>
 		]]></description>
   </rule>
 
-  <rule key="XPATH_INJECTION" priority="INFO">
+  <rule key="XPATH_INJECTION" priority="CRITICAL">
     <name><![CDATA[Security - Potential XPath Injection]]></name>
     <configKey><![CDATA[XPATH_INJECTION]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -828,6 +889,7 @@ could be exposed. This could allow an attacker to access unauthorized data or ma
   <rule key="STRUTS1_ENDPOINT" priority="INFO">
     <name><![CDATA[Security - Found Struts 1 Action]]></name>
     <configKey><![CDATA[STRUTS1_ENDPOINT]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>This class is a Struts 1 Action.</p>
@@ -840,6 +902,7 @@ The use of these parameters should be reviewed to make sure they are used safely
   <rule key="STRUTS2_ENDPOINT" priority="INFO">
     <name><![CDATA[Security - Found Struts 2 Endpoint]]></name>
     <configKey><![CDATA[STRUTS2_ENDPOINT]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>In Struts 2, the endpoints are Plain Old Java Objects (POJOs) which means no Interface/Class needs to be implemented/extended.</p>
@@ -854,6 +917,7 @@ such a setter. The use of these parameters should be reviewed to make sure they 
   <rule key="SPRING_ENDPOINT" priority="INFO">
     <name><![CDATA[Security - Found Spring Endpoint]]></name>
     <configKey><![CDATA[SPRING_ENDPOINT]]></configKey>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>This class is a Spring Controller. All methods annotated with <code>RequestMapping</code> are reachable remotely.
@@ -862,9 +926,14 @@ This class should be analyzed to make sure that remotely exposed methods are saf
 		]]></description>
   </rule>
 
-  <rule key="SQL_INJECTION_HIBERNATE" priority="INFO">
+  <rule key="SQL_INJECTION_HIBERNATE" priority="CRITICAL">
     <name><![CDATA[Security - Potential SQL/HQL Injection (Hibernate)]]></name>
     <configKey><![CDATA[SQL_INJECTION_HIBERNATE]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -914,9 +983,14 @@ q.execute();</pre>
 		]]></description>
   </rule>
 
-  <rule key="SQL_INJECTION_JDO" priority="INFO">
+  <rule key="SQL_INJECTION_JDO" priority="CRITICAL">
     <name><![CDATA[Security - Potential SQL/JDOQL Injection (JDO)]]></name>
     <configKey><![CDATA[SQL_INJECTION_JDO]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -956,9 +1030,14 @@ q.execute(input);</pre>
 		]]></description>
   </rule>
 
-  <rule key="SQL_INJECTION_JPA" priority="INFO">
+  <rule key="SQL_INJECTION_JPA" priority="CRITICAL">
     <name><![CDATA[Security - Potential SQL/JPQL Injection (JPA)]]></name>
     <configKey><![CDATA[SQL_INJECTION_JPA]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1001,9 +1080,14 @@ UserEntity res = q.getSingleResult();</pre>
 		]]></description>
   </rule>
 
-  <rule key="LDAP_INJECTION" priority="INFO">
+  <rule key="LDAP_INJECTION" priority="CRITICAL">
     <name><![CDATA[Security - Potential LDAP Injection]]></name>
     <configKey><![CDATA[LDAP_INJECTION]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1027,9 +1111,11 @@ Therefore, the primary defense against LDAP injection is strong input validation
 		]]></description>
   </rule>
 
-  <rule key="SCRIPT_ENGINE_INJECTION" priority="INFO">
+  <rule key="SCRIPT_ENGINE_INJECTION" priority="CRITICAL">
     <name><![CDATA[Security - Potential code injection when using Script Engine]]></name>
     <configKey><![CDATA[SCRIPT_ENGINE_INJECTION]]></configKey>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1082,9 +1168,12 @@ public void runCustomTrigger(String script) {
 		]]></description>
   </rule>
 
-  <rule key="SPEL_INJECTION" priority="INFO">
+  <rule key="SPEL_INJECTION" priority="CRITICAL">
     <name><![CDATA[Security - Potential code injection when using Spring Expression]]></name>
     <configKey><![CDATA[SPEL_INJECTION]]></configKey>
+    <tag>cwe</tag>
+    <tag>injection</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1118,9 +1207,11 @@ public void parseExpressionInterface(Person personObj,String property) {
 		]]></description>
   </rule>
 
-  <rule key="BAD_HEXA_CONVERSION" priority="INFO">
+  <rule key="BAD_HEXA_CONVERSION" priority="MAJOR">
     <name><![CDATA[Security - Bad hexadecimal concatenation]]></name>
     <configKey><![CDATA[BAD_HEXA_CONVERSION]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>When converting a byte array containing a hash signature to a human readable string, a conversion mistake can be made if
@@ -1156,9 +1247,13 @@ stringBuilder.append( String.format( "%02X", b ) );</pre>
 		]]></description>
   </rule>
 
-  <rule key="HAZELCAST_SYMMETRIC_ENCRYPTION" priority="INFO">
+  <rule key="HAZELCAST_SYMMETRIC_ENCRYPTION" priority="MAJOR">
     <name><![CDATA[Security - Hazelcast Symmetric Encryption]]></name>
     <configKey><![CDATA[HAZELCAST_SYMMETRIC_ENCRYPTION]]></configKey>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>The network communications for Hazelcast is configured to use a symmetric cipher (probably DES or blowfish).</p>
@@ -1174,9 +1269,12 @@ stringBuilder.append( String.format( "%02X", b ) );</pre>
 		]]></description>
   </rule>
 
-  <rule key="NULL_CIPHER" priority="INFO">
+  <rule key="NULL_CIPHER" priority="MAJOR">
     <name><![CDATA[Security - NullCipher Unsafe]]></name>
     <configKey><![CDATA[NULL_CIPHER]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1203,9 +1301,14 @@ byte[] cipherText = c.doFinal(plainText);</pre>
 		]]></description>
   </rule>
 
-  <rule key="UNENCRYPTED_SOCKET" priority="INFO">
+  <rule key="UNENCRYPTED_SOCKET" priority="MAJOR">
     <name><![CDATA[Security - Unencrypted Socket]]></name>
     <configKey><![CDATA[UNENCRYPTED_SOCKET]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1238,9 +1341,12 @@ to do this correctly.
 		]]></description>
   </rule>
 
-  <rule key="DES_USAGE" priority="INFO">
+  <rule key="DES_USAGE" priority="MAJOR">
     <name><![CDATA[Security - DES / DESede Unsafe]]></name>
     <configKey><![CDATA[DES_USAGE]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1269,9 +1375,12 @@ byte[] cipherText = c.doFinal(plainText);</pre>
 		]]></description>
   </rule>
 
-  <rule key="RSA_NO_PADDING" priority="INFO">
+  <rule key="RSA_NO_PADDING" priority="MAJOR">
     <name><![CDATA[Security - RSA NoPadding Unsafe]]></name>
     <configKey><![CDATA[RSA_NO_PADDING]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1296,9 +1405,11 @@ The code should be replaced with:<br/>
 		]]></description>
   </rule>
 
-  <rule key="HARD_CODE_PASSWORD" priority="INFO">
+  <rule key="HARD_CODE_PASSWORD" priority="MAJOR">
     <name><![CDATA[Security - Hard Coded Password]]></name>
     <configKey><![CDATA[HARD_CODE_PASSWORD]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1326,6 +1437,8 @@ props.put(Context.SECURITY_CREDENTIALS, "p@ssw0rd");</pre>
   <rule key="STRUTS_FORM_VALIDATION" priority="INFO">
     <name><![CDATA[Security - Struts Form Without Input Validation]]></name>
     <configKey><![CDATA[STRUTS_FORM_VALIDATION]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1357,9 +1470,13 @@ public class RegistrationForm extends ValidatorForm {
 		]]></description>
   </rule>
 
-  <rule key="XSS_REQUEST_WRAPPER" priority="INFO">
+  <rule key="XSS_REQUEST_WRAPPER" priority="MAJOR">
     <name><![CDATA[Security - XSSRequestWrapper is Weak XSS Protection]]></name>
     <configKey><![CDATA[XSS_REQUEST_WRAPPER]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1399,9 +1516,12 @@ the XSS protection rules defined in the OWASP XSS Prevention Cheat Sheet.
 		]]></description>
   </rule>
 
-  <rule key="BLOWFISH_KEY_SIZE" priority="INFO">
+  <rule key="BLOWFISH_KEY_SIZE" priority="MAJOR">
     <name><![CDATA[Security - Blowfish Usage with Weak Key Size]]></name>
     <configKey><![CDATA[BLOWFISH_KEY_SIZE]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1431,9 +1551,12 @@ keyGen.init(128);</pre>
 		]]></description>
   </rule>
 
-  <rule key="RSA_KEY_SIZE" priority="INFO">
+  <rule key="RSA_KEY_SIZE" priority="MAJOR">
     <name><![CDATA[Security - RSA Usage with Weak Key Size]]></name>
     <configKey><![CDATA[RSA_KEY_SIZE]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>"RSA Laboratories currently recommends key sizes of 1024 bits for corporate use and 2048 bits for extremely valuable keys
@@ -1465,9 +1588,13 @@ keyGen.initialize(2048);
 		]]></description>
   </rule>
 
-  <rule key="UNVALIDATED_REDIRECT" priority="INFO">
+  <rule key="UNVALIDATED_REDIRECT" priority="MAJOR">
     <name><![CDATA[Security - Unvalidated Redirect]]></name>
     <configKey><![CDATA[UNVALIDATED_REDIRECT]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1514,9 +1641,13 @@ keyGen.initialize(2048);
 		]]></description>
   </rule>
 
-  <rule key="XSS_JSP_PRINT" priority="INFO">
+  <rule key="XSS_JSP_PRINT" priority="CRITICAL">
     <name><![CDATA[Security - Potential XSS in JSP]]></name>
     <configKey><![CDATA[XSS_JSP_PRINT]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>NOTE: If you want this rule to work, you have to precompile your JSPs (which usually isn't done in most build environments)
@@ -1560,9 +1691,13 @@ which explains these defenses in significant detail.
 		]]></description>
   </rule>
 
-  <rule key="XSS_SERVLET" priority="INFO">
+  <rule key="XSS_SERVLET" priority="CRITICAL">
     <name><![CDATA[Security - Potential XSS in Servlet]]></name>
     <configKey><![CDATA[XSS_SERVLET]]></configKey>
+    <tag>owasp-top10</tag>
+    <tag>wasc</tag>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1604,9 +1739,11 @@ which explains these defenses in significant detail.
 		]]></description>
   </rule>
 
-  <rule key="XML_DECODER" priority="INFO">
+  <rule key="XML_DECODER" priority="CRITICAL">
     <name><![CDATA[Security - XMLDecoder usage]]></name>
     <configKey><![CDATA[XML_DECODER]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1655,9 +1792,12 @@ The solution is to avoid using XMLDecoder to parse content from an untrusted sou
 		]]></description>
   </rule>
 
-  <rule key="STATIC_IV" priority="INFO">
+  <rule key="STATIC_IV" priority="MAJOR">
     <name><![CDATA[Security - Static IV]]></name>
     <configKey><![CDATA[STATIC_IV]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1696,9 +1836,11 @@ public void encrypt(String message) throws Exception {
 		]]></description>
   </rule>
 
-  <rule key="ECB_MODE" priority="INFO">
+  <rule key="ECB_MODE" priority="MAJOR">
     <name><![CDATA[Security - ECB Mode Unsafe]]></name>
     <configKey><![CDATA[ECB_MODE]]></configKey>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>An authentication cipher mode which provides better confidentiality of the encrypted data should be used instead of Electronic Codebook (ECB) mode,
@@ -1732,9 +1874,12 @@ byte[] cipherText = c.doFinal(plainText);</pre>
 		]]></description>
   </rule>
 
-  <rule key="PADDING_ORACLE" priority="INFO">
+  <rule key="PADDING_ORACLE" priority="MAJOR">
     <name><![CDATA[Security - Cipher is Susceptible to Padding Oracle]]></name>
     <configKey><![CDATA[PADDING_ORACLE]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1767,9 +1912,12 @@ byte[] cipherText = c.doFinal(plainText);</pre>
 		]]></description>
   </rule>
 
-  <rule key="CIPHER_INTEGRITY" priority="INFO">
+  <rule key="CIPHER_INTEGRITY" priority="MAJOR">
     <name><![CDATA[Security - Cipher With No Integrity]]></name>
     <configKey><![CDATA[CIPHER_INTEGRITY]]></configKey>
+    <tag>cwe</tag>
+    <tag>cryptography</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
@@ -1820,6 +1968,8 @@ In the example solution above, the GCM mode introduces an HMAC into the resultin
   <rule key="ESAPI_ENCRYPTOR" priority="INFO">
     <name><![CDATA[Security - Usage of ESAPI Encryptor]]></name>
     <configKey><![CDATA[ESAPI_ENCRYPTOR]]></configKey>
+    <tag>cwe</tag>
+    <tag>security</tag>
     <description><![CDATA[
 
 <p>
