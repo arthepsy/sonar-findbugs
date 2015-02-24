@@ -34,7 +34,7 @@ public class FindbugsProfileTest {
     ValidationMessages validation = ValidationMessages.create();
     RulesProfile profile = findbugsProfile.createProfile(validation);
     assertThat(profile.getActiveRulesByRepository(FindbugsRuleRepository.REPOSITORY_KEY))
-      .hasSize(378);
+      .hasSize(376);
     assertThat(validation.hasErrors()).isFalse();
   }
 
