@@ -6,6 +6,10 @@
 
 ## ChangeLog
 
+### 2015-02-24  
+- Add find-sec-bugs rule tags and set priorities
+- Update messages (code sample, etc) 
+
 ### 2015-01-09  
 - Update rule categories and descriptions (from FindBugs 3.0.0)  
 - Add missing rules from FindBugs 3.0.0 (+13 rules):
