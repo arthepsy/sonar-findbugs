@@ -10,6 +10,16 @@
 - Add find-sec-bugs rule tags and set priorities
 - Update messages (code sample, etc) 
 
+- Update to FindBugs-3.0.1-RC1 (+8 rules):
+    - `DM_BOXED_PRIMITIVE_FOR_COMPARE`  
+    - `DM_INVALID_MIN_MAX`  
+    - `DC_PARTIALLY_CONSTRUCTED`  
+    - `ME_MUTABLE_ENUM_FIELD`  
+    - `ME_ENUM_FIELD_SETTER`  
+    - `UC_USELESS_OBJECT`  
+    - `UC_USELESS_OBJECT_STACK`  
+    - `BSHIFT_WRONG_ADD_PRIORITY`  
+
 ### 2015-01-09  
 - Update rule categories and descriptions (from FindBugs 3.0.0)  
 - Add missing rules from FindBugs 3.0.0 (+13 rules):

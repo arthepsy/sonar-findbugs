@@ -838,6 +838,7 @@
     <priority>MAJOR</priority>
     <name><![CDATA[Multithreaded correctness - Inconsistent synchronization]]></name>
     <configKey><![CDATA[IS_INCONSISTENT_SYNC]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="ML_SYNC_ON_FIELD_TO_GUARD_CHANGING_THAT_FIELD">
@@ -1640,6 +1641,7 @@
     <priority>CRITICAL</priority>
     <name><![CDATA[Performance - Method uses toArray() with zero-length array argument]]></name>
     <configKey><![CDATA[ITA_INEFFICIENT_TO_ARRAY]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="IJU_ASSERT_METHOD_INVOKED_FROM_RUN_METHOD">
@@ -1893,6 +1895,7 @@
     <priority>CRITICAL</priority>
     <name><![CDATA[Correctness - Number of format-string arguments does not correspond to number of placeholders]]></name>
     <configKey><![CDATA[VA_FORMAT_STRING_ARG_MISMATCH]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="VA_FORMAT_STRING_EXTRA_ARGUMENTS_PASSED">
@@ -2282,36 +2285,42 @@
     <priority>INFO</priority>
     <name><![CDATA[Correctness - Bad Applet Constructor relies on uninitialized AppletStub]]></name>
     <configKey><![CDATA[BAC_BAD_APPLET_CONSTRUCTOR]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="CD_CIRCULAR_DEPENDENCY">
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Test for circular dependencies among classes]]></name>
     <configKey><![CDATA[CD_CIRCULAR_DEPENDENCY]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="IMA_INEFFICIENT_MEMBER_ACCESS">
     <priority>INFO</priority>
     <name><![CDATA[Performance - Method accesses a private member variable of owning class]]></name>
     <configKey><![CDATA[IMA_INEFFICIENT_MEMBER_ACCESS]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="USM_USELESS_SUBCLASS_METHOD">
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Method superfluously delegates to parent class method]]></name>
     <configKey><![CDATA[USM_USELESS_SUBCLASS_METHOD]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="USM_USELESS_ABSTRACT_METHOD">
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Abstract Method is already defined in implemented interface]]></name>
     <configKey><![CDATA[USM_USELESS_ABSTRACT_METHOD]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="OBL_UNSATISFIED_OBLIGATION">
     <priority>INFO</priority>
     <name><![CDATA[Experimental - Method may fail to clean up stream or resource]]></name>
     <configKey><![CDATA[OBL_UNSATISFIED_OBLIGATION]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="FB_UNEXPECTED_WARNING">
@@ -2414,6 +2423,7 @@
     <priority>CRITICAL</priority>
     <name><![CDATA[Experimental - Method may fail to clean up stream or resource on checked exception]]></name>
     <configKey><![CDATA[OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="PZ_DONT_REUSE_ENTRY_OBJECTS_IN_ITERATORS">
@@ -2557,12 +2567,14 @@
     <priority>MAJOR</priority>
     <name><![CDATA[Performance - Inefficient use of String.indexOf(String)]]></name>
     <configKey><![CDATA[IIO_INEFFICIENT_INDEX_OF]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="IIO_INEFFICIENT_LAST_INDEX_OF">
     <priority>MAJOR</priority>
     <name><![CDATA[Performance - Inefficient use of String.lastIndexOf(String)]]></name>
     <configKey><![CDATA[IIO_INEFFICIENT_LAST_INDEX_OF]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="CNT_ROUGH_CONSTANT_VALUE">
@@ -2605,30 +2617,35 @@
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Covariant array assignment to a field]]></name>
     <configKey><![CDATA[CAA_COVARIANT_ARRAY_FIELD]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="CAA_COVARIANT_ARRAY_LOCAL">
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Covariant array assignment to a local variable]]></name>
     <configKey><![CDATA[CAA_COVARIANT_ARRAY_LOCAL]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="CAA_COVARIANT_ARRAY_RETURN">
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Covariant array is returned from the method]]></name>
     <configKey><![CDATA[CAA_COVARIANT_ARRAY_RETURN]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="CAA_COVARIANT_ARRAY_ELEMENT_STORE">
     <priority>INFO</priority>
     <name><![CDATA[Correctness - Possibly incompatible element is stored in covariant array]]></name>
     <configKey><![CDATA[CAA_COVARIANT_ARRAY_ELEMENT_STORE]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="TLW_TWO_LOCK_NOTIFY">
     <priority>INFO</priority>
     <name><![CDATA[Multithreaded correctness - Notify with two locks held]]></name>
     <configKey><![CDATA[TLW_TWO_LOCK_NOTIFY]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="MS_MUTABLE_COLLECTION">
@@ -2659,6 +2676,7 @@
     <priority>INFO</priority>
     <name><![CDATA[Multithreaded correctness - Incorrect lazy initialization of instance field]]></name>
     <configKey><![CDATA[LI_LAZY_INIT_INSTANCE]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="JLM_JSR166_UTILCONCURRENT_MONITORENTER">
@@ -2671,54 +2689,63 @@
     <priority>INFO</priority>
     <name><![CDATA[Performance - Method calls prepareStatement in a loop]]></name>
     <configKey><![CDATA[IIL_PREPARE_STATEMENT_IN_LOOP]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="IIL_ELEMENTS_GET_LENGTH_IN_LOOP">
     <priority>INFO</priority>
     <name><![CDATA[Performance - NodeList.getLength() called in a loop]]></name>
     <configKey><![CDATA[IIL_ELEMENTS_GET_LENGTH_IN_LOOP]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="IIL_PATTERN_COMPILE_IN_LOOP">
     <priority>INFO</priority>
     <name><![CDATA[Performance - Method calls Pattern.compile in a loop]]></name>
     <configKey><![CDATA[IIL_PATTERN_COMPILE_IN_LOOP]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="IIL_PATTERN_COMPILE_IN_LOOP_INDIRECT">
     <priority>INFO</priority>
     <name><![CDATA[Performance - Method compiles the regular expression in a loop]]></name>
     <configKey><![CDATA[IIL_PATTERN_COMPILE_IN_LOOP_INDIRECT]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="BRSA_BAD_RESULTSET_ACCESS">
     <priority>INFO</priority>
     <name><![CDATA[Correctness - Method attempts to access a result set field with index 0]]></name>
     <configKey><![CDATA[BRSA_BAD_RESULTSET_ACCESS]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="BC_IMPOSSIBLE_CAST_PRIMITIVE_ARRAY">
     <priority>INFO</priority>
     <name><![CDATA[Correctness - Impossible cast involving primitive array]]></name>
     <configKey><![CDATA[BC_IMPOSSIBLE_CAST_PRIMITIVE_ARRAY]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="BC_NULL_INSTANCEOF">
     <priority>INFO</priority>
     <name><![CDATA[Correctness - A known null value is checked to see if it is an instance of a type]]></name>
     <configKey><![CDATA[BC_NULL_INSTANCEOF]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="VR_UNRESOLVABLE_REFERENCE">
     <priority>INFO</priority>
     <name><![CDATA[Correctness - Class makes reference to unresolvable class or method]]></name>
     <configKey><![CDATA[VR_UNRESOLVABLE_REFERENCE]]></configKey>
+    <status>BETA</status>
   </rule>
 
   <rule key="NP_METHOD_PARAMETER_RELAXING_ANNOTATION">
     <priority>INFO</priority>
     <name><![CDATA[Dodgy code - Method tightens nullness annotation on parameter]]></name>
     <configKey><![CDATA[NP_METHOD_PARAMETER_RELAXING_ANNOTATION]]></configKey>
+    <status>DEPRECATED</status>
   </rule>
 
   <rule key="CO_COMPARETO_INCORRECT_FLOATING">
@@ -2761,6 +2788,54 @@
     <priority>INFO</priority>
     <name><![CDATA[Correctness - String index is out of bounds]]></name>
     <configKey><![CDATA[RANGE_STRING_INDEX]]></configKey>
+  </rule>
+
+  <rule key="DM_BOXED_PRIMITIVE_FOR_COMPARE">
+    <priority>INFO</priority>
+    <name><![CDATA[Performance - Boxing a primitive to compare]]></name>
+    <configKey><![CDATA[DM_BOXED_PRIMITIVE_FOR_COMPARE]]></configKey>
+  </rule>
+
+  <rule key="DM_INVALID_MIN_MAX">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Incorrect combination of Math.max and Math.min]]></name>
+    <configKey><![CDATA[DM_INVALID_MIN_MAX]]></configKey>
+  </rule>
+
+  <rule key="DC_PARTIALLY_CONSTRUCTED">
+    <priority>INFO</priority>
+    <name><![CDATA[Multithreaded correctness - Possible exposure of partially initialized object]]></name>
+    <configKey><![CDATA[DC_PARTIALLY_CONSTRUCTED]]></configKey>
+  </rule>
+
+  <rule key="ME_MUTABLE_ENUM_FIELD">
+    <priority>INFO</priority>
+    <name><![CDATA[Bad practice - Enum field is public and mutable]]></name>
+    <configKey><![CDATA[ME_MUTABLE_ENUM_FIELD]]></configKey>
+  </rule>
+
+  <rule key="ME_ENUM_FIELD_SETTER">
+    <priority>INFO</priority>
+    <name><![CDATA[Bad practice - Public enum method unconditionally sets its field]]></name>
+    <configKey><![CDATA[ME_ENUM_FIELD_SETTER]]></configKey>
+  </rule>
+
+  <rule key="UC_USELESS_OBJECT">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Useless object created]]></name>
+    <configKey><![CDATA[UC_USELESS_OBJECT]]></configKey>
+  </rule>
+
+  <rule key="UC_USELESS_OBJECT_STACK">
+    <priority>INFO</priority>
+    <name><![CDATA[Dodgy code - Useless object created on stack]]></name>
+    <configKey><![CDATA[UC_USELESS_OBJECT_STACK]]></configKey>
+  </rule>
+
+  <rule key="BSHIFT_WRONG_ADD_PRIORITY">
+    <priority>INFO</priority>
+    <name><![CDATA[Correctness - Possible bad parsing of shift operation]]></name>
+    <configKey><![CDATA[BSHIFT_WRONG_ADD_PRIORITY]]></configKey>
   </rule>
 
 </rules>
